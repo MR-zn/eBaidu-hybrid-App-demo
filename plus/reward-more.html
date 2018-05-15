@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/sidemenu-sideweb.css"/>
+		<style>
+			p {
+				text-indent: 22px;
+			}
+		</style>
+	</head>
+
+	<body id="reward-more">
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span>返回</span></a>
+			<h1 class="mui-title">积分兑换</h1>
+		</header>
+		
+		<section id="container">
+			<ul>
+				<li>
+					<div class="tle">发布订单</div>
+					<div class="reward-num">积分+5</div>
+					<div class="time">4月5号</div>
+				</li>
+				<li>
+					<div class="tle">成功邀请好友</div>
+					<div class="reward-num">积分+10</div>
+					<div class="time">3月5号</div>
+				</li>
+				<li>
+					<div class="tle">首次发布订单</div>
+					<div class="reward-num">积分+10</div>
+					<div class="time">2月5号</div>
+				</li>
+			</ul>
+		</section>
+		
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script>
+		mui.init();
+		
+		mui.plusReady(function(){
+			plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
+		})
+	</script>
+
+</html>

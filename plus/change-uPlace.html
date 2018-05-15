@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/sidemenu-sideweb.css"/>
+	</head>
+
+	<body id="change-uPlace">
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span>返回</span></a>
+			<h1 class="mui-title">收货地址</h1>
+		</header>
+		
+		<section id="container" class="mui-table-view-radio">
+			<ul class="card">
+				<li>
+					<div class="mui-input-row mui-radio">
+						<label></label>
+						<input name="radio1" checked="checked" type="radio">
+					</div>
+					<a>收件人：<span class="name">李四</span></a>
+					<a>收件电话：<span class="phone">1684684684</span></a>
+					<a>收件地址：<span class="place">的撒泼开发票开撒法【皮卡皮【开发票【kads</span></a>
+				</li>
+				<li>
+					<a class="del"><img src="../images/sidemenu/del2.png"/>删除</a>
+					<a href="add-newPlace.html" class="edit"><img src="../images/sidemenu/edit.png"/>编辑</a>
+				</li>
+			</ul>
+			<ul class="card">
+				<li>
+					<div class="mui-input-row mui-radio">
+						<label></label>
+						<input name="radio1" type="radio">
+					</div>
+					<a>收件人：<span class="name">张三</span></a>
+					<a>收件电话：<span class="phone">48564868584</span></a>
+					<a>收件地址：<span class="place">的撒dsadsaasdsadsadasds</span></a>
+				</li>
+				<li>
+					<a class="del"><img src="../images/sidemenu/del2.png"/>删除</a>
+					<a href="add-newPlace.html" class="edit"><img src="../images/sidemenu/edit.png"/>编辑</a>
+				</li>
+			</ul>
+			
+			<div id="add-place" class="add-place"><a href="add-newPlace.html">添加新地址</a></div>
+		</section>
+
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/sidemenu.js"></script>
+	<script>
+		mui.init();
+		mui.plusReady(function(){
+			plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
+		})
+		document.onkeydown = function () {
+	        if (window.event && window.event.keyCode == 13) {
+	            window.event.returnValue = false;
+	        }
+	    }
+		var cards = document.querySelectorAll('.card');
+		var dels = document.querySelectorAll('.del');
+		var edits = document.querySelectorAll('.edit');
+		for (var i = 0,len=cards.length;i<len;i++) {
+			dels[i].index = i;
+			edits[i].index = i;
+			dels[i].addEventListener('tap',function(){
+				if(cards.length>1){
+					cards[this.index].parentNode.removeChild(cards[this.index]); 
+					cards = document.querySelectorAll('.card');
+					cards[0].querySelector('input').setAttribute('checked','checked');
+				}else{
+					mui.toast('无法删除默认地址！',{ duration:1500, type:'div' })
+				}
+			})
+		}
+		
+		change('#change-uPlace .card');
+		function change(id){
+			var aniShow = "slide-in-right";
+			mui(id).on('tap', 'a', function() {
+				var id = this.getAttribute("href");
+				var type = this.getAttribute("open-type");
+				var href = this.href;
+				
+				var name = cards[this.index].querySelector('.name').innerText;
+				var phone = cards[this.index].querySelector('.phone').innerText;
+				var place = cards[this.index].querySelector('.place').innerText;
+				
+				var webview_style = {
+					popGesture: "close",
+					statusbar : {
+						background: "#f7f7f7"
+					}
+				}
+				
+				var extras = {
+					name: name,
+					phone: phone,
+					place: place
+				};
+			
+				var titleType = this.getAttribute("data-title-type");
+				
+				var sw = true;
+				
+				if(titleType == "native") {
+			
+					if(!~id.indexOf('pullrefresh.html')) {
+						webview_style.bounce = "vertical";
+					}
+			
+					var webview = plus.webview.create(href, id, webview_style);
+					var view = new plus.nativeObj.View("title", {
+						top: 0,
+						height: "44px",
+						width: "100%",
+						dock: "top",
+						position: "dock"
+					});
+			
+					view.drawRect("#f7f7f7"); //绘制背景色
+					view.drawRect("#cccccc", {
+						top: "43px",
+						left: "0px"
+					}); //绘制底部边线
+			
+					var bitmap = new plus.nativeObj.Bitmap("back");
+					bitmap.loadBase64Data("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAb1BMVEUAAAAAev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8AAACubimgAAAAI3RSTlMAGfUTGfQTGPMSGPIYGhgaGBsXGxcbFxwXHBccFhwWHRYdHWufDPQAAAABYktHRACIBR1IAAAAB3RJTUUH4QETEBwooeTlkQAAAJVJREFUSMft1EkSgkAQRNFGUXFWHBDBibr/HTUwD5B/48Ig1y+io7u6MqUhf5hsNEY+j5hMgZ/FJ8Xc9ovos3T96utjbfqN/Nb0O/m96Uv5g+mP8ifTn+Ur01/ka9Nf5RvTt/I309/lH6Z/yr9Mn+Q71/MT8B34K/E58Enzv8R/K98HvnF8p3lr8F7izce7lbf3kJ/lDQp9HdBhgg3PAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE3LTAxLTE5VDE2OjI4OjQwKzA4OjAwpTDFwQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNy0wMS0xOVQxNjoyODo0MCswODowMNRtfX0AAAAASUVORK5CYII=");
+					view.drawBitmap(bitmap, {}, {
+						top: "10px",
+						left: "10px",
+						width: "24px",
+						height: "24px"
+					});
+					view.drawText(this.innerText.trim(), {}, {
+						size: "17px",
+						weight: "normal"
+					});
+			
+					view.setTouchEventRect({
+						top: "0px",
+						left: "0px",
+						width: "44px",
+						height: "100%"
+					});
+					view.interceptTouchEvent(true);
+					view.addEventListener("click", function(e) {
+						webview.evalJS("mui.back();");
+					}, false);
+					webview.append(view);
+			
+					webview.addEventListener("loaded", function() {
+						webview.show(aniShow, 300, null, extras);
+					})
+			
+				} else {
+		//			//侧滑菜单需动态控制一下zindex值；
+		//			if(~id.indexOf('offcanvas-')) {
+		//				webview_style.zindex = 9998;
+		//				webview_style.popGesture = ~id.indexOf('offcanvas-with-right') ? "close" : "none";
+		//			}
+			
+					var webview = plus.webview.create(this.href, id, webview_style, extras);
+					webview.addEventListener("loaded", function() {
+						webview.show(aniShow, 200);
+					});
+				}
+			});
+		}
+	</script>
+
+</html>

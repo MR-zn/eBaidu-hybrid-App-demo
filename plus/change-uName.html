@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/sidemenu-sideweb.css"/>
+	</head>
+
+	<body id="change-uName">
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span>我的资料</span></a>
+			<h1 class="mui-title">修改</h1>
+		</header>
+		
+		<section id="container">
+			<form class="mui-input-group">
+				<div class="change-uName mui-input-row"> 
+					<!--<div class="write" contenteditable="true">123</div>-->
+					<input type="text" class="write mui-input-clear" value="123">
+					<!--<a class="del"><img src="../images/sidemenu/del.png"/></a>-->
+				</div>
+			</form>
+			<div class="change">保存</div>
+		</section>
+
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script>
+		mui.init();
+		document.onkeydown = function () {
+	        if (window.event && window.event.keyCode == 13) {
+	            window.event.returnValue = false;
+	        }
+	    }
+		
+//		var con = document.querySelector('#container');
+//		var write = con.querySelector('.write');
+//		var del = con.querySelector('.del');
+//		document.onkeyup = function () {
+//			if(write.innerText==''){
+//				del.style.display = 'none';
+//			}else{
+//				del.style.display = 'block';
+//			}
+//		}
+//		write.onkeyup = function(){
+//		  var _html = this.innerHTML;
+//		  if(_html.length > 6){
+//		    this.innerHTML = _html.substr(0,6);
+//		    this.blur();
+//		  }
+//		}
+//		del.onclick = function(){
+//			write.innerText = '';
+//			this.style.display = 'none';
+//		}
+	</script>
+
+</html>

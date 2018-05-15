@@ -1,0 +1,169 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/order.css"/>
+	</head>
+	<!--待确认-->
+	<body id="comment">
+		
+		<ul class="card">
+			<li>
+				<a>订单号：<span>9528482</span></a>
+				<a>交易待完成</a>
+			</li>
+			<li>
+				<div class="img"><img src="../images/ddm.png"/></div>
+				<div class="info">
+					<a>4.18 18:00</a>
+					<a>[站点A]小件立即送达</a>
+					<a>安抚hi奥法还哦放大后i</a>
+				</div>
+				<div class="state">
+					<a>金额0元</a>
+				</div>
+			</li>
+			<li>
+				<a class="conform">确认收货</a>
+				<a class="connect">联系他</a>
+			</li>
+		</ul>
+		<ul class="card">
+			<li>
+				<a>订单号：<span>9528482</span></a>
+				<a>交易完成</a>
+			</li>
+			<li>
+				<div class="img"><img src="../images/ddm.png"/></div>
+				<div class="info">
+					<a>4.18 18:00</a>
+					<a>[站点A]小件立即送达</a>
+					<a>安抚hi奥法还哦放大后i</a>
+				</div>
+				<div class="state">
+					<a>金额0元</a>
+				</div>
+			</li>
+			<li>
+				<a href="pinlun.html" class="comment">立即评价</a>
+				<a class="connect">联系他</a>
+				<a class="del">删除订单</a>
+			</li>
+		</ul>
+		
+		
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init({
+			  pullRefresh : {
+			    container:"#comment",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+			    down : {
+			      style:'circle',//必选，下拉刷新样式，目前支持原生5+ ‘circle’ 样式
+			      color:'#2BD009', //可选，默认“#2BD009” 下拉刷新控件颜色
+			      height:'50px',//可选,默认50px.下拉刷新控件的高度,
+			      range:'100px', //可选 默认100px,控件可下拉拖拽的范围
+			      offset:'0px', //可选 默认0px,下拉刷新控件的起始位置
+			      auto: false,//可选,默认false.首次加载自动上拉刷新一次
+			      callback :pullfresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+			    }
+			  }
+			})
+			
+			//下拉刷新
+			var con = document.querySelector('#comment');
+			function pullfresh(){
+				var liElement = '<a>123</a>';
+		
+				con.innerHTML = liElement + con.innerHTML;
+		        
+				mui('#comment').pullRefresh().endPulldown();
+			}
+			
+			mui.plusReady(function(){
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
+			})
+			
+			
+			var aniShow = "slide-in-right";
+			mui('#comment').on('tap', '.comment', function() {
+				var id = this.getAttribute("href");
+				var type = this.getAttribute("open-type");
+				var href = this.href;
+				
+				var webview_style = {
+					popGesture: "close",
+					statusbar : {
+						background: "#f7f7f7"
+					}
+				}
+				
+				var extras = {};
+		
+				var titleType = this.getAttribute("data-title-type");
+		
+				if(titleType == "native") {
+		
+					if(!~id.indexOf('pullrefresh.html')) {
+						webview_style.bounce = "vertical";
+					}
+		
+					var webview = plus.webview.create(href, id, webview_style);
+					var view = new plus.nativeObj.View("title", {
+						top: 0,
+						height: "44px",
+						width: "100%",
+						dock: "top",
+						position: "dock"
+					});
+		
+					view.drawRect("#f7f7f7"); //绘制背景色
+					view.drawRect("#cccccc", {
+						top: "43px",
+						left: "0px"
+					}); //绘制底部边线
+		
+					var bitmap = new plus.nativeObj.Bitmap("back");
+					bitmap.loadBase64Data("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAMAAABg3Am1AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAb1BMVEUAAAAAev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8Aev8AAACubimgAAAAI3RSTlMAGfUTGfQTGPMSGPIYGhgaGBsXGxcbFxwXHBccFhwWHRYdHWufDPQAAAABYktHRACIBR1IAAAAB3RJTUUH4QETEBwooeTlkQAAAJVJREFUSMft1EkSgkAQRNFGUXFWHBDBibr/HTUwD5B/48Ig1y+io7u6MqUhf5hsNEY+j5hMgZ/FJ8Xc9ovos3T96utjbfqN/Nb0O/m96Uv5g+mP8ifTn+Ur01/ka9Nf5RvTt/I309/lH6Z/yr9Mn+Q71/MT8B34K/E58Enzv8R/K98HvnF8p3lr8F7izce7lbf3kJ/lDQp9HdBhgg3PAAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDE3LTAxLTE5VDE2OjI4OjQwKzA4OjAwpTDFwQAAACV0RVh0ZGF0ZTptb2RpZnkAMjAxNy0wMS0xOVQxNjoyODo0MCswODowMNRtfX0AAAAASUVORK5CYII=");
+					view.drawBitmap(bitmap, {}, {
+						top: "10px",
+						left: "10px",
+						width: "24px",
+						height: "24px"
+					});
+					view.drawText(this.innerText.trim(), {}, {
+						size: "17px",
+						weight: "normal"
+					});
+		
+					view.setTouchEventRect({
+						top: "0px",
+						left: "0px",
+						width: "44px",
+						height: "100%"
+					});
+					view.interceptTouchEvent(true);
+					view.addEventListener("click", function(e) {
+						webview.evalJS("mui.back();");
+					}, false);
+					webview.append(view);
+		
+					webview.addEventListener("loaded", function() {
+						webview.show(aniShow, 200, null, extras);
+					})
+		
+				} else {
+		
+					var webview = plus.webview.create(this.href, id, webview_style, extras);
+					webview.addEventListener("loaded", function() {
+						webview.show(aniShow, 200);
+					});
+				}
+			});
+		</script>
+	</body>
+
+</html>

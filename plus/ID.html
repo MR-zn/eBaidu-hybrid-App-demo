@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>ID</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/sidemenu-sideweb.css"/>
+		<style type="text/css">
+			header {
+				background: #76c056!important;
+				box-shadow: none!important;
+			}
+			header a,header h1{
+				color: white!important;
+			}
+		</style>
+	</head>
+
+	<body id="ID">
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span>我的资料</span></a>
+			<h1 class="mui-title">实名认证 </h1>
+		</header>
+		
+		<section id="container">
+			<div class="Flase">
+				<form class="mui-input-group">
+					<div class="add-name mui-input-row">
+						姓&nbsp;&nbsp;&nbsp;&nbsp;名<input class="write mui-input-clear" type="text" placeholder="请填入真实姓名" />
+						<!--<div class="write" contenteditable="true">请填入真实姓名</div>-->
+					</div>
+					<div class="add-ID mui-input-row">
+						身份证<input class="write mui-input-clear" type="text" placeholder="请填入真实身份证" />
+						<!--<div class="write" contenteditable="true">请填入真实身份证</div>-->
+					</div>
+				</form>
+				<div id="" class="add">提交</div>
+			</div>
+			<div class="True mui-hidden">
+				<div>
+					<div class="head"><img src="../images/ddm.png"/></div>
+					<div class="name">李四</div>
+					<div class="Id">1231948103213123</div>
+				</div>
+				<div>恭喜你！你已认证成功了！</div>
+			</div>
+		</section>
+
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/sidemenu.js"></script>
+	<script>
+		mui.init();
+		
+		var writes = document.querySelectorAll('.write');
+		var data=['请填入真实姓名','请填入真实身份证'];
+		for (var i=0,len=writes.length;i<len;i++) {
+			writes[i].index = i;
+			writes[i].addEventListener('tap',function(){
+//				console.log(1) 
+				if(this.innerHTML==data[this.index]){
+					this.innerHTML='';
+				}
+				
+			})
+		}
+		
+		document.onkeydown = function () {
+	        if (window.event && window.event.keyCode == 13) {
+	            window.event.returnValue = false;
+	        }
+	    }
+		
+		document.querySelector('.add').addEventListener('tap',function(){
+			console.log(1)
+		})
+	</script>
+
+</html>

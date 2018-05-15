@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>e摆渡 - 让顺手变为可能</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- import Vue before Element -->
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/register_1.css" />
+		<!--App自定义的css-->
+		<!--<link rel="stylesheet" type="text/css" href="../css/app.css"/>-->
+		<script src="../js/register/iconfont.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			p {
+				text-indent: 22px;
+			}
+			
+			.icon {
+				width: 1em;
+				height: 1em;
+				vertical-align: -0.15em;
+				fill: currentColor;
+				overflow: hidden;
+			}
+			
+			.tab .imfor_wrt span {
+				border-bottom: 2px solid #ff7f00;
+				color: #000;
+			}
+		</style>
+	</head>
+
+	<body id="register">
+		<header>
+			<a href="#" class="icon-box">
+				<svg class="icon icon-jiantou" aria-hidden="true">
+					<use xlink:href="#icon-iconfontjiantou1"></use>
+				</svg>
+			</a>
+			<span>注册</span>
+		</header>
+
+		<section id="container">
+			<ul class="tab">
+				<li class="imfor_wrt">
+					<a href="#"><span>信息填写</span></a>
+				</li>
+				<li class="data_wrt">
+					<a href="#"><span>资料填写</span></a>
+				</li>
+				<li class="login_now">
+					<a href="#"><span>立即登录</span></a>
+				</li>
+			</ul>
+
+			<ul class="form" id="form">
+				<li>
+					<div class="phone">
+						<form class="mui-input-group">
+							<div class="mui-input-row">
+								<input type="text" name="phone" id="phone" class="mui-input-clear" value="" placeholder="请输入常用的手机号" />
+								<span class="mui-icon mui-icon-contact"></span>
+							</div>
+						</form>
+					</div>
+				</li>
+				<li>
+				</li>
+				<li>
+					<div class="identify">
+						<form class="mui-input-group">
+							<div class="mui-input-row">
+								<input type="text" name="identify" id="identify" class="mui-input-clear" value="" placeholder="请输入验证码" />
+								<span class="mui-icon mui-icon-contact"></span>
+								<input type="button" id="btn" value="确认发送" onclick="settime(this)" /> 
+							</div>
+						</form>
+					</div>
+				</li>
+				<li>
+				</li>
+				<li>
+					<div class="pwd">
+						<form class="mui-input-group">
+							<div class="mui-input-row">
+								<input type="password" name="pwd" id="pwd" class="mui-input-clear" value="" placeholder="请输入6-14位密码" />
+								<span class="mui-icon mui-icon-contact"></span>
+							</div>
+						</form>
+					</div>
+				</li>
+			</ul>
+			<div class="login-box">
+				<input type="button" name="login" id="login" value="下一步" />
+			</div>
+
+		</section>
+		<template>
+			<!-- `checked` 为 true 或 false -->
+			<el-checkbox v-model="checked">备选项</el-checkbox>
+		</template>
+		<footer>
+			<span>登录既代表阅读并同意<a href="#">服务条款</a></span>
+		</footer>
+
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script>
+		//		alert(window.screen.availHeight)
+		mui.init();
+
+		mui.plusReady(function() {
+			plus.webview.currentWebview().setStyle({
+				scrollIndicator: 'none'
+
+			});
+
+			bWidth = plus.display.resolutionWidth;
+			bHeight = plus.display.resolutionHeight;
+			var footer = document.querySelector('footer');
+			footer.style.top = bHeight - 30 + 'px';
+			//			console.log(footer)
+			//  alert(bHeight - 50)
+		})
+	</script>
+
+	<script type="text/javascript">
+		var countdown = 60;
+		function settime(obj) {
+			if(countdown == 0) {
+				obj.removeAttribute("disabled");
+				obj.value = "免费获取验证码";
+				countdown = 60;
+				return;
+			} else {
+				obj.setAttribute("disabled", true);
+				obj.style.cursor = 'not-allowed';
+				obj.value = "重新发送(" + countdown + ")";
+				countdown--;
+			}
+			setTimeout(function() {
+				settime(obj)
+			}, 1000)
+		}
+	</script>
+
+	<script type="text/javascript">
+		function isPasswd(s) {
+			//校验密码：只能输入6-14个字母、数字、下划线  
+			var patrn = /^(\w){6,14}$/;
+			if(patrn.test(s)) {
+				//正则判断成功
+				mui.toast('注册成功', {
+					duration: 'long',
+					type: 'div'
+				})
+				return true
+				//				
+			} else {
+				mui.alert('请输入6-14位密码！', '提示')
+				return false
+			}
+		}
+
+		var phone = document.getElementById("phone");
+		var ident = document.getElementById("identify")
+		var pwd = document.getElementById("pwd")
+		var loginBtn = document.getElementById("login");
+		var boolData = isPasswd(pwd.value);
+		loginBtn.onclick = function() {
+			isPasswd(pwdValu.value);//正则判断
+			mui.ajax('http://server-name/login.php', {
+				data: {
+					phone: phone.value,
+					username: ident.value,
+					password: pwd.value,
+				},
+				dataType: 'json', //服务器返回json格式数据
+				type: 'post', //HTTP请求类型
+				timeout: 10000, //超时时间设置为10秒；
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				success: function(data) {
+					if (data.state == 0) {
+						if (boolData == True) {
+							mui.toast('验证成功！', '提示')
+							window.location.href='../muihtml.html';
+						}
+					}
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+//					...
+				},
+				error: function(xhr, type, errorThrown) {
+					//异常处理；
+					console.log(type);
+				}
+			});
+		}
+	</script>
+
+</html>

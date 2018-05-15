@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/order.css"/>
+		<style>
+			#container {
+				padding-top: 40px;
+			}
+		</style>
+	</head>
+		
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span>订单</span></a>
+			<h1 class="mui-title">评星评级</h1>
+		</header>
+		
+		<section id="container">
+			<div class="mui-content-padded">
+				<div class="mui-inline">应用评分</div>
+				<div class="icons mui-inline" style="margin-left: 6px;">
+					<i data-index="1" class="mui-icon mui-icon-star"></i>
+					<i data-index="2" class="mui-icon mui-icon-star"></i>
+					<i data-index="3" class="mui-icon mui-icon-star"></i>
+					<i data-index="4" class="mui-icon mui-icon-star"></i>
+					<i data-index="5" class="mui-icon mui-icon-star"></i>
+				</div>
+			</div><br />
+		</section>
+		
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			
+			mui('.icons').on('tap','i',function(){
+			  	var index = parseInt(this.getAttribute("data-index"));
+			  	var parent = this.parentNode;
+			  	var children = parent.children;
+			  	if(this.classList.contains("mui-icon-star")){
+			  		for(var i=0;i<index;i++){
+		  				children[i].classList.remove('mui-icon-star');
+		  				children[i].classList.add('mui-icon-star-filled');
+			  		}
+			  	}else{
+			  		for (var i = index; i < 5; i++) {
+			  			children[i].classList.add('mui-icon-star')
+			  			children[i].classList.remove('mui-icon-star-filled')
+			  		}
+			  	}
+			  	starIndex = index;
+		  });
+			
+		</script>
+	</body>
+
+</html>

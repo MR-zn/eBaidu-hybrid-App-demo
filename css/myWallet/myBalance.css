@@ -1,0 +1,291 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    background-color: #f4f3ef;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+#container {
+    position: relative;
+    top: 0;
+    background: #f4f3ef;
+}
+
+header h1 {
+    font-family: "微软雅黑";
+    font-weight: lighter;
+}
+
+header {
+    background: #5bb630;
+    height: 190px;
+}
+
+header .btnBar {
+    height: 30px;
+    position: relative;
+}
+
+header .btnBar a {
+    font-size: 13px;
+    color: #fff;
+    line-height: 30px;
+    position: absolute;
+    padding: 0 12px;
+}
+
+header .btnBar a.back {
+    left: 0px;
+}
+
+header .btnBar a.detail {
+    right: 0px;
+}
+
+.balance_title {
+    text-align: center;
+}
+
+.balance_title span {
+    font-size: 13px;
+    color: #fff;
+}
+
+.balance_amount {
+    height: 100px;
+    text-align: center;
+}
+
+.balance_amount span {
+    color: #fff;
+    font-size: 37.75px;
+    line-height: 100px;
+}
+
+
+/*-------------------------------------*/
+
+footer {
+    width: 100%;
+    position: absolute;
+    top: 648.1818px;
+    text-align: center;
+}
+
+footer span {
+    color: #999999;
+    font-size: 13.5px;
+}
+
+footer span a {
+    color: #5bb630;
+}
+
+.total_amount {
+    height: 38px;
+    line-height: 38px;
+    font-size: 13px;
+    color: #fff;
+    text-align: center;
+}
+
+#pay {
+    display: block;
+    text-align: center;
+    margin-top: 40px;
+    position: relative;
+}
+
+#Withdraw {
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+    position: relative;
+}
+
+#payBtn,
+#withdrawbtn {
+    background-color: #ff7f00;
+    width: 90.12345679012346%;
+    height: 60px;
+    border-radius: 10px;
+    color: #fff;
+    border: 1px solid #ccc;
+}
+
+#withdrawbtn {
+    background: #fff;
+    color: #000;
+}
+
+#payBtn:active {
+    background: #c76300;
+}
+
+#withdrawbtn:active {
+    background: #7c7873;
+}
+
+.btnName {
+    position: absolute;
+    top: 50%;
+    margin-top: -11px;
+    left: 50%;
+    margin-left: -30.5px;
+    cursor: pointer;
+}
+
+#pay .btnName .icon,
+#pay .btnName span {
+    font-size: 18.75px;
+    color: #fff;
+}
+
+#Withdraw .btnName .icon,
+#Withdraw .btnName span {
+    font-size: 18.75px;
+    color: #000;
+}
+
+.el-message-box {
+    position: relative;
+}
+
+#popover,
+#popover2 {
+    /*position: relative;*/
+    overflow: hidden;
+}
+
+#popover>img,
+#popover2>img {
+    position: absolute;
+    right: 10px;
+    bottom: 0px;
+}
+
+.el-message-box__title {
+    text-align: center;
+    color: #5bb630;
+    font-size: 21px;
+    font-weight: 500;
+}
+
+.el-message-box__message h4 {
+    font-size: 15px;
+    color: #000 !important;
+}
+
+.el-message-box__message p {
+    font-size: 15px;
+    color: #000;
+    font-weight: 700;
+}
+
+.el-message-box {
+    width: 90.12345679012346%;
+}
+
+.paysheetBox {
+    height: 300px;
+    background: #fff;
+    position: relative;
+}
+
+.paysheet_title {
+    text-align: center;
+}
+
+.paysheet_title span {
+    font-size: 18.75px;
+    line-height: 65px;
+    font-weight: bold;
+}
+
+.payIcon {
+    box-sizing: content-box;
+    font-size: 26px;
+    display: inline-block;
+    float: left;
+    padding: 11px 0 11px 20px;
+}
+
+.mui-checkbox label {
+    display: inline-block;
+    float: left;
+    width: auto;
+    padding: 0 0 0 10px;
+}
+
+.mui-checkbox span {
+    line-height: 48px;
+}
+
+#pay_Weixin,
+#pay_Alipay {
+    top: 11px;
+}
+
+.mui-checkbox input::before {
+    font-size: 26px;
+}
+
+.pay_confirm button {
+    width: 150px;
+    height: 40px;
+    background: #ff7f00;
+    position: absolute;
+    left: 50%;
+    margin-left: -75px;
+    bottom: 20px;
+}
+
+.paysheet_weixin,
+.paysheet_alipay {
+    position: relative;
+}
+
+.paysheet_weixin::after,
+.paysheet_alipay:after {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    border: 1px solid #d9d9d9;
+    width: 95%;
+    left: 2.5%;
+}
+
+.allwithDraw {
+    color: #ff7f00;
+}
+
+.allwithDraw:active {
+    color: #cb6500;
+}
+
+#input_widthDraw::-webkit-input-placeholder {
+    color: #000;
+    font-size: 21px;
+    line-height: 40px;
+}
+
+#pay_input::-webkit-input-placeholder {
+    color: #000;
+    font-size: 21px;
+    line-height: 40px;
+}
+
+#pay_input,#alipay_account,#input_widthDraw {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #e5e5e5;
+}

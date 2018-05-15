@@ -1,0 +1,131 @@
+{
+	"index.html": {
+		"refer": [
+			"index-menu.html",
+			"plus/order.html",
+			"examples/guide.html",
+			"plus/user-msg.html",
+			"plus/add-newPlace.html",
+			"plus/change-uPlace.html"
+		],
+		"resources": []
+	},
+	"index-menu.html": {
+		"refer": [
+			"plus/user-info.html",
+			"plus/custom-service.html",
+			"plus/reward.html",
+			"plus/feedback.html",
+			"plus/setting.html",
+			"plus/user-msg.html",
+			"plus/myBalance.html",
+			"plus/order.html"
+		],
+		"resources": []
+	},
+	"plus/order.html": {
+		"resources": [
+			"plus/order-complete.html"
+		],
+		"refer": [
+			"plus/order-comment.html",
+			"plus/order-confirm.html",
+			"plus/order-complete.html",
+			"index.html"
+		]
+	},
+	"plus/user-info.html": {
+		"refer": [
+			"plus/change-uName.html",
+			"plus/change-uPhone.html",
+			"plus/change-uPlace.html",
+			"plus/ID.html"
+		],
+		"resources": []
+	},
+	"plus/change-uName.html": {
+		"refer": [
+			"plus/user-info.html"
+		],
+		"resources": []
+	},
+	"plus/change-uPlace.html": {
+		"refer": [
+			"plus/add-newPlace.html"
+		],
+		"resources": []
+	},
+	"plus/add-newPlace.html": {
+		"refer": [
+			"plus/change-uPlace.html",
+			"index.html"
+		],
+		"resources": []
+	},
+	"plus/reward.html": {
+		"refer": [
+			"plus/reward-more.html"
+		],
+		"resources": []
+	},
+	"plus/user-msg.html": {
+		"refer": [
+			"plus/user-msg-more.html"
+		],
+		"resources": []
+	},
+	"plus/user-msg-more.html": {
+		"refer": [
+			"plus/user-msg.html"
+		],
+		"resources": []
+	},
+	"plus/order-comment.html": {
+		"refer": [
+			"plus/pinlun.html"
+		],
+		"resources": []
+	},
+	"plus/login.html": {
+		"href": "plus/login.html",
+		"resources": [
+			"js/mui.min.js",
+			"css/login.css",
+			"js/login/iconfont.js",
+			"images/login/banner.png"
+		],
+		"refer": [
+			"plus/forget_pwd.html",
+			"plus/register_1.html",
+			"plus/setting.html"
+		],
+		"priority": 0
+	},
+	"plus/balance_detail.html": {
+		"refer": [
+			"plus/myBalance.html"
+		]
+	},
+	"plus/myBalance.html": {
+		"refer": [
+			"plus/balance_detail.html",
+			"index.html"
+		]
+	},
+	"plus/setting.html": {
+		"refer": [
+			"plus/login.html",
+			"plus/feedback.html"
+		]
+	},
+	"plus/forget_pwd.html": {
+		"refer": [
+			"plus/login.html"
+		]
+	},
+	"plus/register_1.html": {
+		"refer": [
+			"plus/login.html"
+		]
+	}
+}

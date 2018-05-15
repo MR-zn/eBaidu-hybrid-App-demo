@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/sidemenu-sideweb.css"/>
+	</head>
+
+	<body id="change-uPhone">
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span>我的资料</span></a>
+			<h1 class="mui-title">修改</h1>
+		</header>
+		
+		<section id="container">
+			<form class="mui-input-group">
+				<div class="change-uPhone mui-input-row">
+					<!--<div class="write" contenteditable="true">请输入6-14位新手机号</div>-->
+					<input type="text" class="write mui-input-clear" placeholder="请输入6-14位新手机号">
+					<a class="code mui-hidden" id="getCode">发送验证码</a>
+					<!--<a class="del"><img src="../images/sidemenu/del.png"/></a>-->
+				</div>
+				<div class="change-uPhone mui-input-row">
+					<!--<div class="write" contenteditable="true">请输入验证码</div>-->
+					<input type="text" class="write mui-input-clear" placeholder="请输入验证码">
+					<!--<a class="del"><img src="../images/sidemenu/del.png"/></a>-->
+				</div>
+			</form>
+			<div class="change">保存</div>
+		</section>
+
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script>
+		mui.init();
+		
+		mui.plusReady(function(){
+			
+		})
+		
+		
+		document.onkeydown = function () {
+	        if (window.event && window.event.keyCode == 13) {
+	            window.event.returnValue = false;
+	        }
+	    }
+		
+		var con = document.querySelector('#container');
+		var write = con.querySelectorAll('.write');
+		var getCode = con.querySelector('#getCode');
+//		var del = con.querySelectorAll('.del');
+		write[0].onkeyup = function () {
+			getCode.classList.remove('mui-hidden')
+		}
+//		write[0].addEventListener('tap',function(){
+//			if(this.innerText=='请输入6-14位新手机号'){
+//				this.innerText='';
+//			}
+//			if(write[1].innerText==''){
+//				write[1].innerText='请输入验证码';
+//			}
+//		})
+//		write[1].addEventListener('tap',function(){
+//			if(this.innerText=='请输入验证码'){
+//				this.innerText='';
+//			}
+//			if(write[0].innerText==''){
+//				write[0].innerText='请输入6-14位新手机号';
+//			}
+//		})
+//		del[0].onclick = function(){
+//			write[0].innerText = '请输入6-14位新手机号';
+//		}
+//		del[1].onclick = function(){
+//			write[1].innerText = '请输入验证码';
+//		}
+//		write[0].onkeyup = function(){
+//		  var _html = this.innerHTML;
+//		  if(_html.length > 14){
+//		    this.innerHTML = _html.substr(0,14);
+//		    this.blur();
+//		  }
+//		}
+//		write[1].onkeyup = function(){
+//		  var _html = this.innerHTML;
+//		  if(_html.length > 6){
+//		    this.innerHTML = _html.substr(0,6);
+//		    this.blur();
+//		  }
+//		}
+		
+		//验证码
+		var getCode = document.querySelector('#getCode');
+		getCode.addEventListener('tap',Code);
+		function Code(){
+			if(!(/^1[3|0-9][0-9]\d{4,8}$/.test(write[0].innerHTML))){
+				mui.toast('手机号输入有误！',{ duration:1500, type:'div' })
+			}else{
+				var timer=null;
+				var start=60;
+				
+				timer = setInterval(function(){
+					if(start > 0){
+						getCode.innerText = start - 1 + 's';
+						start -=1;
+						getCode.removeEventListener('tap',Code);
+//						console.log(1)
+					}else{
+						window.clearInterval(timer);
+						getCode.innerText = '重新发送';
+						getCode.addEventListener('tap',Code);  
+//						console.log(2)
+					}
+				},1000)
+			}
+		
+		}
+		
+		//保存
+		document.querySelector('.change').addEventListener('tap',function(){
+			if(!(/^1[3|0-9][0-9]\d{4,8}$/.test(write[0].innerHTML))){
+				mui.toast('手机号输入有误！',{ duration:1500, type:'div' })
+			}else if(write[1].innerHTML==''||write[1].innerHTML=='请输入验证码'){
+				mui.toast('验证码输入有误！',{ duration:1500, type:'div' })
+			}
+		})
+	</script>
+
+</html>

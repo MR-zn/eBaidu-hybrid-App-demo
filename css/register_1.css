@@ -1,0 +1,221 @@
+/*comment*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	background-color: #f4f3ef;
+}
+
+ul,
+li {
+	list-style: none;
+}
+
+header {
+	height: 34px;
+	background: #7ac256;
+	text-align: center;
+}
+
+header span {
+	font-family: "微软雅黑";
+	font-size: 17px;
+	color: #fff;
+	line-height: 34px;
+}
+
+.icon-box {
+	position: absolute;
+	display: block;
+	padding: 6px 25px 4.7px 25px;
+}
+
+.icon-jiantou {
+	font-size: 22px;
+	font-weight: bold;
+	color: #fff;
+}
+
+.tab {
+	height: 35px;
+	background: #fff;
+	width: 100%;
+	display: flex;
+}
+
+.tab>li {
+	flex: 1;
+	text-align: center;
+}
+
+.tab>li a {
+	display: block;
+	color: #b6b9bf;
+}
+
+.tab>li span {
+	line-height: 35px;
+	box-sizing: border-box;
+	font-size: 15px;
+	height: 35px;
+	/*padding: 9px 0px;*/
+	display: inline-block;
+}
+
+
+/*---------------------------------------------*/
+
+.form {
+	width: 83.574879%;
+	margin: 25px auto;
+	overflow: hidden;
+	border-radius: 5px;
+}
+
+.form li {
+	background: #c3c2bf;
+}
+
+.form li>div {
+	height: 55px;
+	margin: 0px auto 0 auto;
+	position: relative;
+}
+
+.form li>div input {
+	background: #c3c2bf;
+	color: #fff;
+	padding-left: 50px;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: 24px 24px;
+	background-position: 12px 12px;
+	display: block;
+	box-sizing: border-box;
+	border: none;
+}
+
+.form li>div input::-webkit-input-placeholder {
+	color: #fff;
+}
+
+.mui-input-group,
+.mui-input-group:before,
+.mui-input-group:after {
+	background: none;
+}
+
+.el-collapse {
+	border: none;
+}
+
+.form li>div input#phone {
+	background: url(../images/register/phone.png) no-repeat !important;
+	background-size: 24px 24px !important;
+	background-position: 34.5px 14.5px !important;
+}
+
+.form li>div input#identify {
+	background: url(../images/register/iden.png) no-repeat !important;
+	background-size: 24px 24px !important;
+	background-position: 34.5px 14.5px !important;
+}
+
+.form li>div input#pwd {
+	background: url(../images/register/pwd.png) no-repeat !important;
+	background-size: 24px 24px !important;
+	background-position: 34.5px 14.5px !important;
+}
+
+
+/*-------------------------------------*/
+
+.login-box {
+	height: 40px;
+	width: 300px;
+	margin: 20px auto 0;
+	text-align: center;
+}
+
+#login {
+	width: 100%;
+	height: 100%;
+	border-radius: 20px;
+	color: #fff;
+	background: #76c056;
+}
+
+#login:active {
+	background: #477235;
+}
+
+.form li>div .mui-input-row {
+	height: 55px;
+}
+
+.form li>div .mui-input-row input {
+	height: 100% !important;
+	padding-left: 70px !important;
+}
+
+.form li>div .mui-input-row .mui-icon-clear {
+	top: 19px !important;
+	font-size: 17px;
+}
+
+.form li:nth-child(2)::after,
+.form li:nth-child(4)::after {
+	content: "";
+	display: block;
+	width: 93%;
+	border: 1px solid #fff;
+	margin: auto;
+}
+
+#btn {
+	padding: 0 10px !important;
+	/*border-left: 1px solid #fff;*/
+	color: #fff;
+	width: auto;
+	height: auto;
+	position: absolute;
+	right: 10px;
+	top: 0;
+	font-size: 17px;
+}
+
+.confirm {
+	margin: 85px auto 0;
+	text-align: center;
+}
+
+.finish {
+	margin: 50px auto;
+	text-align: center;
+	font-size: 17px;
+	color: #5bb630;
+}
+
+
+/*-------------------------------------*/
+
+footer {
+	width: 100%;
+	position: absolute;
+	top: 648.1818px;
+	text-align: center;
+}
+
+footer span {
+	color: #999999;
+	font-size: 13.5px;
+}
+
+footer span a {
+	color: #5bb630;
+}

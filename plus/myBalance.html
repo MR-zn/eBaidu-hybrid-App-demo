@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>e摆渡 - 让顺手变为可能</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="stylesheet" href="../css/mui.css">
+        <!--App自定义的css-->
+        <!--<link rel="stylesheet" type="text/css" href="../css/app.css"/>-->
+        <!-- 引入样式 -->
+        <link rel="stylesheet" href="../css/plugin/elementui.css">
+        <link rel="stylesheet" type="text/css" href="../css/myWallet/myBalance.css" />
+        <script src="../js/iconfont.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../js/plugin/vue.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../js/plugin/elementui.js" type="text/javascript" charset="utf-8"></script>
+        <style>
+            .icon {
+                width: 1em;
+                height: 1em;
+                vertical-align: -0.15em;
+                fill: currentColor;
+                overflow: hidden;
+            }
+
+            .el-button--warning {
+                background-color: #ff7f00;
+                border-color: #ff7f00;
+            }
+
+            .el-button--warning:hover,
+            .el-button--warning:active,
+            .el-button--warning:focus,
+            .el-button--warning:visited {
+                background-color: #cb6500 !important;
+                border-color: #cb6500 !important;
+            }
+
+            .el-message-box__btns {
+                text-align: center;
+            }
+
+            #div {
+                width: 0px;
+                height: 0px;
+                background: red;
+                position: fixed;
+                top: 70%;
+                left: 50%;
+            }
+            /*移除底部或顶部三角,需要在删除此代码*/
+
+            .mui-popover .mui-popover-arrow:after {
+                width: 0px;
+            }
+        </style>
+    </head>
+
+    <body id="myBalance">
+        <section>
+            <header>
+                <div class="btnBar">
+                    <a href="../index.html" class="back mui-action-back mui-icon mui-icon-left-nav mui-pull-left">
+                        <!--<svg class="icon icon-jiantou" aria-hidden="true">
+                            <use xlink:href="#icon-iconfontjiantou1"></use>
+                        </svg>-->
+                        返回</a>
+                    <a href="balance_detail.html" class="detail mui-btn mui-btn-blue mui-btn-link mui-pull-right">余额明细</a>
+                </div>
+
+                <div class="balance_title">
+                    <span>余额（元）</span>
+                </div>
+                <div class="balance_amount">
+                    <span>0.00</span>
+                </div>
+                <div class="total_amount"><span>总金额：￥5.00</span></div>
+            </header>
+
+            <div class="btnBox">
+                <a href='#popover' id="pay" @click="open3">
+                    <input type="button" name="payBtn" id="payBtn" value="" />
+                    <div class="btnName">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-chongzhi"></use>
+                        </svg>
+                        <span>充值</span>
+                    </div>
+                    <!--<div id="msgbox">
+						<template>
+							<el-button type="text" @click="open3">点击打开 Message Box</el-button>
+						</template>
+					</div>-->
+                </a>
+                <a href="#popover2" id="Withdraw" @click="open4">
+                    <input type="button" name="withdrawbtn" id="withdrawbtn" value="" />
+                    <div class="btnName">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-tixian"></use>
+                        </svg>
+                        <span>提现</span>
+                    </div>
+                </a>
+            </div>
+
+        </section>
+
+        <!-------------下方弹出菜单------------>
+        <div id="paysheet" class="mui-popover mui-popover-bottom mui-popover-action ">
+            <div class="paysheetBox">
+                <div class="paysheet_title">
+                    <span>确认支付</span>
+                </div>
+                <div class="paysheet_weixin">
+                    <div class="mui-input-row mui-checkbox">
+                        <svg class="icon payIcon" aria-hidden="true">
+                            <use xlink:href="#icon-weixin"></use>
+                        </svg>
+                        <label><span>微信支付</span></label>
+                        <input id="pay_Weixin" name="checkbox1" value="Item 1" type="checkbox" onclick="fn1();" checked>
+                    </div>
+                </div>
+                <div class="paysheet_alipay">
+                    <div class="mui-input-row mui-checkbox">
+                        <svg class="icon payIcon" aria-hidden="true">
+                            <use xlink:href="#icon-zhifubaorenzheng"></use>
+                        </svg>
+                        <label><span>支付宝支付</span></label>
+                        <input id="pay_Alipay" name="checkbox1" value="Item 1" type="checkbox" onclick="fn2();">
+                    </div>
+                </div>
+                <div class="paysheet_balance">
+                    <div class="mui-input-row mui-checkbox">
+                        <img src="../images/appLogo.png" / height="26" width="26" style="float: left;padding: 11px 0 11px 20px;box-sizing: content-box;">
+                        <label><span>余额支付</span></label>
+                        <input id="pay_balance" name="checkbox1" value="Item 1" type="checkbox" onclick="fn3();">
+                    </div>
+                </div>
+                <div class="pay_confirm">
+                    <button type="button" onclick="closeSheet();" data-loading-icon="mui-spinner mui-spinner-custom" data-loading-text='正在支付中...' class="mui-btn mui-btn-warning">确认支付{{0}}元</button>
+                </div>
+            </div>
+        </div>
+
+        <!-------------支付弹出层------------>
+        <div id="popover" class="mui-popover" style="height: 250px;top: none;">
+            <img src="../images/myBalance/rabbit.png" />
+            <div class="mui-popover-arrow"></div>
+            <div class="el-message-box__header">
+                <div class="el-message-box__title">
+                    <span>充值</span></div>
+            </div>
+            <div class="el-message-box__content">
+                <div class="el-message-box__message">
+                    <p>请输入充值金额</p>
+                </div>
+                <div class="el-message-box__input" style="">
+                    <div class="el-input">
+                        <input type="text" id="pay_input" autocomplete="off" placeholder="￥" class="el-input__inner">
+                    </div>
+                    <div class="el-message-box__errormsg" style="visibility: hidden;"></div>
+                </div>
+            </div>
+            <div class="el-message-box__btns">
+                <button type="button" id="pay_confirm" class="el-button el-button--default el-button--small el-button--warning"><!----><!----><span>
+	        	确认充值
+	        </span></button></div>
+        </div>
+
+        <!-------------提现弹出层------------>
+        <div id="popover2" class="mui-popover" style="height: 250px;top: none;">
+            <img src="../images/myBalance/rabbit.png" />
+            <div class="mui-popover-arrow"></div>
+            <div class="el-message-box__header">
+                <div class="el-message-box__title">
+                    <span>提现</span></div>
+            </div>
+            <div class="el-message-box__content">
+                <div class="el-message-box__message">
+                    <h4>提现到支付宝</h4>
+                </div>
+                <div class="el-message-box__input" style="">
+                    <div class="el-input">
+                        <input type="text" id='alipay_account' autocomplete="off" placeholder="请输入支付宝帐号" class="el-input__inner">
+                    </div>
+                </div>
+
+                <div class="el-message-box__message">
+                    <h4>请输入提现金额</h4>
+                </div>
+                <div class="el-message-box__input" style="">
+                    <div class="el-input">
+                        <input id="input_widthDraw" type="text" autocomplete="off" placeholder="￥" class="el-input__inner">
+                    </div>
+                    <span>余额￥<i id="balance">5.00</i>，<a href="#" id="allwithDraw" class="allwithDraw">全部提现</a></span>
+                </div>
+            </div>
+            <div class="el-message-box__btns">
+                <button type="button" id="widthDraw_confirm" class="el-button el-button--default el-button--small el-button--warning"><!----><!----><span>
+                确认提现
+            </span></button></div>
+        </div>
+
+    </body>
+    <script src="../js/plugin/mui.min.js"></script>
+    <script src="../js/mybalance.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../js/sidemenu.js"></script>
+
+    <script type="text/javascript">
+        //      mui('#paysheet').popover('toggle');
+
+        function dataUpload(value) {
+            var boolData = re(value);
+            mui.ajax('http://server-name/mybalance.php', {
+                data: {
+                    num: value
+                },
+                dataType: 'json', //服务器返回json格式数据
+                type: 'post', //HTTP请求类型
+                timeout: 10000, //超时时间设置为10秒；
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                success: function(data) {
+                    if(data.state == 0) {
+                        if(boolData == True) {
+                            //                          弹出下方菜单
+                            mui('#paysheet').popover('toggle');
+                        }
+                    }
+                    //服务器返回响应，根据响应结果，分析是否登录成功；
+                    //                  ...
+                },
+                error: function(xhr, type, errorThrown) {
+                    //异常处理；
+                    console.log(type);
+                }
+            });
+        }
+
+        var pay_input = document.getElementById("pay_input")
+        var input_widthDraw = document.getElementById("input_widthDraw")
+        var pay_confirm = document.getElementById("pay_confirm");
+        var widthDraw_confirm = document.getElementById("widthDraw_confirm");
+        var alipay_account = document.getElementById("alipay_account");
+        pay_confirm.onclick = function() {
+            dataUpload(pay_input.value);
+        }
+
+        widthDraw_confirm.onclick = function() {
+            if(alipay(alipay_account.value) == true) {
+                dataUpload(input_widthDraw.value);
+            }
+        }
+    </script>
+
+</html>

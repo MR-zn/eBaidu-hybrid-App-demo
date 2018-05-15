@@ -1,0 +1,782 @@
+/*comment*/
+* {
+	margin: 0;
+	padding: 0;
+}
+html,
+body {
+	background-color: #efeff4;
+}
+ul,li {
+	list-style: none;
+}
+a {
+	color: #5bb630;
+}
+form {
+	background: none!important;
+	border: none!important;
+	outline: none!important;
+}
+.mui-input-group:before,
+.mui-input-group:after,
+.mui-input-row:after {
+	height: 0!important;
+}
+
+.mui-bar,.mui-title {
+	height: 40px;
+}
+.mui-table-view-cell:after {
+	height: 0;
+}
+.mui-action-back span {
+	font-size: 14px!important;
+	display: block;
+	margin: -18px 0 0 20px;
+}
+.mui-icon-clear {
+	line-height: 30px;
+}
+.mui-bar .mui-icon {
+	padding-top: 8px;
+}
+
+#container {
+	position: absolute;
+	width: 100%;
+	top: 40px;
+	bottom: 0;
+}
+#container a {
+	letter-spacing: 1px;
+}
+
+/*sidemenu*/
+#sidemenu .user-info{
+	padding: 50px 50px 0;
+}
+#sidemenu .user-info>li {
+	padding: 12px 0;
+}
+#sidemenu .user-info .user-head-img img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+#sidemenu .user-info a {
+	display: block;
+	text-align: center;
+	margin: auto;
+	color: black;
+	position: relative;
+}
+#sidemenu .user-info li.user-head-img a {
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin-bottom: 10px;
+}
+#sidemenu .user-info li.ident {
+	color: #CCCCCC;
+	font-size: 12px;
+}
+#sidemenu .user-info>li>a>img {
+	position: absolute;
+	width: 20px;
+	height: 19px;
+	left: 45px;
+	top: -1px;
+}
+
+#sidemenu footer {
+	position: absolute;
+	width: 100%;
+	bottom: 20px;
+	text-align: center;
+	font-size: 12px;
+}
+#sidemenu footer a{
+	color: black;
+}
+
+/*我的资料*/
+#user-info #container header {
+	width: 100%;
+	padding: 30px 0;
+}
+#user-info #container header div.user-img {
+	width: 80px;
+	height: 80px;
+	margin: auto;
+}
+#user-info #user-img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+#user-info #container header a {
+	font-size: 12px;
+	color: #7a7a7a;
+}
+#user-info #container .mui-table-view {
+	margin-bottom: 25px;
+	/*padding-left: 35px;*/
+}
+#user-info #container .mui-table-view li {
+	height: 50px;
+	line-height: 30px;
+	padding: 0;
+	border-bottom: 1px solid #CCCCCC;
+}
+#user-info #container .mui-table-view li:last-child {
+	border-bottom: none;
+}
+#user-info #container span {
+	float: right;
+	/*margin-right: 25px;*/
+}
+#user-info .sex {
+	margin-right: -15px!important;
+}
+#user-info .mui-table-view a {
+	padding: 10px 35px 10px 22px;
+	margin: 0;
+}
+#user-info .mui-table-view a:after {
+	transform: translateY(-50%) rotate(0deg);
+}
+
+#user-info #picture li {
+	padding: 0;
+}
+#user-info #picture li a {
+	padding: 10px 0;
+	color: #000000;
+}
+#user-info .ID {
+	color: #ff7f00;
+}
+
+/*用户名修改*/
+#change-uName .change-uName,
+#change-uPhone .change-uPhone {
+	width: 85%;
+	height: 50px;
+	margin: 14px auto;
+	background: #FFFFFF;
+	font-size: 14px;
+	line-height: 50px;
+	padding: 0 5px;
+	border-radius: 5px;
+	position: relative;
+}
+#change-uName .change-uName .write,
+#change-uPhone .change-uPhone .write {
+	position: absolute;
+	/*left: 10px;
+	right: 40px;*/
+	/*white-space: nowrap;
+	overflow: hidden;*/
+	width: 100%;
+	height: 100%;
+}
+#change-uPhone .change-uPhone .write {
+	color: #999999;
+}
+#change-uName .del,
+#change-uPhone .del {
+	display: block;
+	position: absolute;
+	width: 20px;
+	height: 20px;
+	right: 10px;
+	bottom: 52%;
+}
+#change-uName .del img,
+#change-uPhone .del img {
+	width: 100%;
+	height: 100%;
+}
+#change-uName .change,
+#change-uPhone .change,
+#change-uPlace .add-place,
+#add-newplace .add {
+	width: 80%;
+	height: 40px;
+	margin: 35px auto;
+	background-color: #76c056;
+	border-radius: 25px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 18px;
+	color: #FFFFFF;
+}
+
+#change-uPhone .code {
+	font-size: 13px;
+	display: block;
+	position: absolute;
+	height: 30px;
+	border: 1px solid #7ac256;
+	line-height: 30px;
+	color: #999999;
+	right: 40px;
+	top: 10px;
+	/*padding: 0 10px;*/
+	text-align: center;
+	width: 90px;
+}
+.mui-toast-container {
+	bottom: 50% !important;
+	position: fixed;
+}
+.mui-toast-message {
+	opacity: 0.6; 
+	color: #fff; 
+	width: 180px; 
+	padding: 15px 10px;
+}
+
+/*收件地址*/
+#change-uPlace .card:first-child {
+	margin-top: 10px;
+}
+#change-uPlace .card {
+	/*width: 85%;*/
+	width: 100%;
+	margin: auto;
+	background-color: #FFFFFF;
+	margin-bottom: 15px;
+}
+#change-uPlace .card li {
+	position: relative;
+}
+#change-uPlace .card li:first-child {
+	padding: 10px;
+	border: 1px solid #e8e8e8;
+}
+#change-uPlace .card li .mui-radio {
+	position: absolute;
+	right: -5px;
+	top: 5px;
+}
+#change-uPlace .card li .mui-radio input {
+	width: 20px;
+	height: 20px;
+}
+#change-uPlace .card li .mui-radio input:before {
+	font-size: 20px;
+}
+#change-uPlace .card li:first-child a {
+	display: block;
+	min-height: 30px;
+	color: #000000;
+	font-size: 15px;
+	overflow: hidden;
+}
+#change-uPlace .card li:first-child a:last-child span {
+	display: block;
+	float: right;
+	/*width: 74%;*/
+	width: 78%;
+}
+#change-uPlace .card li:last-child {
+	border: 1px solid #e8e8e8;
+	border-top: none;
+}
+#change-uPlace .card li:last-child a {
+	display: inline-block;
+	width: 49%;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	color: #999999;
+	text-indent: 2em;
+	position: relative;
+}
+#change-uPlace .card li:last-child a img {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	left: 35%;
+	top: 8px;
+}
+#change-uPlace .card li:last-child a:first-child {
+	border-right: 1px solid #e8e8e8;
+}
+#change-uPlace #container .add-place a {
+	color: #FFFFFF;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+/*添加收件地址*/
+#add-newplace .add-newplace {
+	width: 85%;
+	height: 50px;
+	margin: 14px auto;
+	background: #FFFFFF;
+	font-size: 14px;
+	line-height: 50px;
+	padding: 0 5px;
+	border-radius: 5px;
+	position: relative;
+}
+#add-newplace .add-newplace .write {
+	position: absolute;
+	width: 79%;
+	height: 100%;
+	font-size: 15px;
+	text-align: right;
+	right: 0;
+	
+	z-index: 0;
+	border: none;
+}
+
+/*实名认证*/
+#ID .add-name,
+#ID .add-ID {
+	width: 85%;
+	height: 50px;
+	margin: 14px auto;
+	background: #FFFFFF;
+	font-size: 16px;
+	line-height: 50px;
+	padding: 0 15px;
+	border-radius: 5px;
+	position: relative;
+}
+#ID .write {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 80%;
+	height: 100%;
+	font-size: 14px;
+	padding-left: 0;
+	font-size: 14px;
+	border: none;
+}
+#ID .add {
+	width: 80%;
+	height: 40px;
+	margin: 35px auto;
+	background-color: #76c056;
+	border-radius: 25px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 18px;
+	color: #FFFFFF;
+}
+#ID .True {
+	margin-top: 80px;
+}
+#ID .True:before {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 147px;
+	background: #76c056;
+	top: 0;
+}
+#ID .True>div {
+	width: 80%;
+	margin: auto;
+	text-align: center;
+}
+#ID .True>div:first-child{
+	background-color: #FFFFFF;
+	border-radius: 10px;
+	position: relative;
+	padding: 60px 0 10px;
+}
+#ID .True>div:first-child .head {
+	position: absolute;
+	top: -45px;
+	margin-left: -45px;
+	left: 50%;
+	margin-bottom: 0;
+}
+#ID .True>div:first-child div {
+	margin-bottom: 10px;
+}
+#ID .True div:first-child img {
+	width: 90px;
+	height: 90px;
+	border-radius: 50%;
+}
+#ID .True>div:last-child {
+	color: #76c056;
+	font-size: 18px;
+	padding-top: 50px;
+}
+
+/*积分兑换*/
+#reward #container header {
+	margin-bottom: 15px;
+	background-color: #6abc43;
+	box-shadow:0px 2px 9px #cecdcd, 2px 2px 5px #cecdcd;
+}
+#reward #container header a {
+	color: #FFFFFF;
+	font-size: 14px;
+	letter-spacing: 1px;
+}
+#reward #container header>div {
+	padding: 5px 30px 0;
+}
+#reward #container header>div a:last-child {
+	float: right;
+}
+#reward #container header>ul {
+	padding-bottom: 30px;
+	border-bottom: 6px #bcefa4 solid;
+}
+#reward #container header>ul img {
+	width: 50px;
+	height: 50px;
+}
+#reward #container header>ul li {
+	text-align: center;
+	padding: 1px 0;
+}
+#reward #container .card {
+	margin-bottom: 15px;
+	background-color: #FFFFFF;
+	padding: 10px 30px 25px;
+	box-shadow:0px 2px 9px #cecdcd, 2px 2px 5px #cecdcd;
+}
+#reward #container .card li{
+	text-align: center;
+	position: relative;
+}
+#reward #container .card li:first-child:before,
+#reward #container .card li:first-child:after {
+	content: "";
+	display: block;
+	position: absolute;	
+	width: 35%;
+	background-color: #CCCCCC;
+	height: 1px;
+	top: 8px;
+}
+#reward #container .card li:first-child:after {
+	right: 0;
+}
+#reward #container .card a {
+	color: #999999;
+	font-size: 14px;
+}
+#reward #container #spnum {
+	padding: 20px;
+}
+#reward #container #spnum a {
+	font-size: 22px;
+	color: #ff7f00;
+}
+#reward #container .card .share a {
+	color: #6abc43;
+	font-size: 13px;
+}
+#reward #container .card img {
+	width: 38px;
+	height: 38px;
+}
+#reward #container .card ul.rewards li {
+	padding-bottom: 13px;
+}
+#reward #container .card ul.rewards li:nth-child(3) a {
+	font-size: 15px;
+	color: #6abc43;
+	font-weight: bolder;
+}
+#reward #container .card ul.rewards li:nth-child(3) a:after,
+#reward #container .card ul.more li:last-child a:after {
+	content: "";
+	display: block;
+	width: 35%;
+	border-radius: 50%;
+	height: 5px;
+	background: radial-gradient(#b5b4b4,#cccccc 30%,#ffffff);
+	margin: 3px auto 0;
+}
+#reward #container .card ul.rewards li:last-child {
+	padding: 0;
+}
+#reward #container .card ul.rewards li:last-child a {
+	display: inline-block;
+	padding: 2px 7px 1px;
+	font-weight: bold;
+	font-size: 13px;
+	border: 1px solid #CCCCCC;
+}
+/*积分明细*/
+#reward-more #container {
+	padding: 10px 20px;
+}
+#reward-more #container ul {
+	background-color: #FFFFFF;
+}
+#reward-more #container ul li {
+	padding: 20px 25px;
+	position: relative;
+	border-bottom: 1px solid #f6f4f4;
+}
+#reward-more #container ul li .tle {
+	margin-bottom: 10px;
+	color: #ff7f00;
+}
+#reward-more #container ul li .time {
+	position: absolute;
+	right: 20px;
+	top: 40%;
+}
+#reward-more #container ul li:last-child {
+	border-bottom: none;
+}
+
+/*我的消息*/
+#user-msg .user-msg {
+	width: 100%;
+	padding: 15px 0 0;
+}
+#user-msg .user-msg a {
+	color: black;
+	font-size: 16px;
+}
+#user-msg .user-msg ul {
+	height: 65px;
+}
+#user-msg .user-msg>li {
+	background-color: #FFFFFF;
+	padding: 8px 5px;
+	border-bottom: 1px solid #e8e8e8;
+	position: relative;
+	overflow: hidden;
+}
+#user-msg .user-msg>li li {
+	height: 65px;
+	float: left;
+}
+#user-msg .user-msg>li li:first-child {
+	width: 20%;
+	padding-left: 10px;
+}
+#user-msg .user-msg>li li:nth-child(2) {
+	width: 60%;
+	padding: 10px 0 0 10px;
+}
+#user-msg .user-msg>li li:nth-child(2) a {
+	display: block;
+}
+#user-msg .user-msg>li li:nth-child(2) a.content {
+	font-size: 12px;
+	width: 100%;
+	white-space: nowrap;
+	overflow:hidden;
+	text-overflow: ellipsis;
+	height: 20px;
+	margin-top: 5px;
+}
+#user-msg .user-msg>li li:last-child {
+	width: 20%;
+	line-height: 65px;
+	text-align: center;
+}
+#user-msg .user-msg>li li:last-child a {
+	position: relative;
+	font-size: 12px;
+}
+#user-msg .user-msg>li li:last-child a.new:after {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	background-color: #ff7f00;
+	top: 1px;
+	right: -12px;
+	border-radius: 50%;
+}
+#user-msg .user-msg li:last-child {
+	border: none;
+}
+#user-msg .user-msg .head-img img {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+}
+
+#user-msg .del {
+	position: absolute;
+	height: 100%;
+	width: 80px;
+	background-color: #ff7f00;
+	top: 0;
+	right: -80px;
+	line-height: 80px;
+	text-align: center;
+	opacity: 0;
+	transition: all .3s;
+}
+#user-msg .del.move {
+	right: 0;
+	opacity: 1;
+}
+
+/*消息详情*/
+#user-msg-more #container img {
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+}
+#user-msg-more #container>div {
+	width: 80%;
+	margin: 20px auto;
+	background-color: #FFFFFF;
+	border-radius: 5px;
+	overflow: hidden;
+	padding: 10px 30px 20px 10px;
+}
+#user-msg-more #container>div div {
+	float: left;
+}
+#user-msg-more #container>div>div:first-child {
+	width: 25%;
+}
+#user-msg-more #container>div>div:last-child {
+	width: 75%;
+}
+#user-msg-more #container>div>div:last-child div {
+	margin: 10px 0;
+	font-size: 15px;
+}
+
+/*我的客服*/
+#custom-service .card {
+	position: fixed;
+	width: 84%;
+	height: 130px;
+	left: 8%;
+	top: 50px;
+	background: #FFFFFF;
+	border-radius: 10px;
+	padding: 20px 30px;
+}
+#custom-service .card div {
+	float: left;
+	height: 100%;
+}
+#custom-service .card div:first-child {
+	width: 23%;
+}
+#custom-service .card div:first-child img {
+	height: 100%;
+}
+#custom-service .card div:last-child {
+	padding-top: 15px;
+	width: 77%;
+	font-size: 14px;
+	text-indent: 1em;
+}
+
+#custom-service footer {
+	box-shadow: none;
+	height: 50px;
+}
+#custom-service footer ul {
+	width: 100%;
+	height: 100%;
+	padding: 10px 20px;
+}
+#custom-service footer ul li {
+	float: left;
+	height: 100%;
+}
+#custom-service footer ul li:first-child,
+#custom-service footer ul li:last-child {
+	width: 15%;
+	line-height: 30px;
+}
+#custom-service footer ul li:last-child {
+	padding-left: 20px;
+}
+#custom-service footer ul li:first-child img {
+	width: 50%;
+	margin-top: 5px;
+}
+#custom-service footer ul li:nth-child(2) {
+	width: 70%;
+}
+#custom-service footer ul li:nth-child(2) textarea {
+	height: 100%;
+	padding: 5px;
+	font-size: 14px;
+	overflow: hidden;
+}
+#custom-service footer ul li:last-child a {
+	font-size: 15px;
+	color: #999999;
+	display: inline-block;
+}
+
+
+/*意见反馈*/
+#feedback form {
+	width: 85%;
+	margin: 10px auto;
+	
+}
+#feedback form li {
+	margin-bottom: 5px;
+}
+#feedback form textarea {
+	height: 130px;
+	font-size: 14px;
+	box-shadow: 0 1px 6px #ccc;
+	padding: 8px;
+	overflow: hidden;
+	color: #CCCCCC;
+	margin: 0;
+}
+#feedback form .picture {
+	display: block;
+	width: 50px;
+	height: 50px;
+	border: 1px solid #999999;
+	line-height: 50px;
+	text-align: center;
+	font-size: 40px;
+	color: #999999;
+	margin-left: 10px;
+}
+#feedback form input {
+	margin: auto;
+	display: block;
+	width: 190px;
+	padding: 5px 10px;
+	background-color: #d9d9d9;
+	border: 1px solid #999999;
+	color: #999999;
+	font-size: 18px;
+}
+
+/*设置*/
+#setting #container {
+	padding-top: 15px;
+}
+#setting #container ul {
+	background: none;
+}
+#setting #container ul:before,
+#setting #container ul:after {
+	height: 0;
+}
+#setting #container li {
+	margin-bottom: 10px;
+	background: #FFFFFF;
+}

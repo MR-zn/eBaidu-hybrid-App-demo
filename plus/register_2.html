@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>e摆渡 - 让顺手变为可能</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<!-- 引入样式 -->
+		<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+		<!-- import Vue before Element -->
+		<script src="https://unpkg.com/vue/dist/vue.js"></script>
+		<!-- 引入组件库 -->
+		<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+		<link rel="stylesheet" href="../css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="../css/register_2.css" />
+		<!--App自定义的css-->
+		<!--<link rel="stylesheet" type="text/css" href="../css/app.css"/>-->
+		<script src="../js/register/iconfont.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			p {
+				text-indent: 22px;
+			}
+			
+			.icon {
+				width: 1em;
+				height: 1em;
+				vertical-align: -0.15em;
+				fill: currentColor;
+				overflow: hidden;
+			}
+			
+			.tab .data_wrt span {
+				border-bottom: 2px solid #ff7f00;
+				color: #000;
+			}
+		</style>
+	</head>
+
+	<body id="register">
+		<header>
+			<a href="#" class="icon-box">
+				<svg class="icon icon-jiantou" aria-hidden="true">
+					<use xlink:href="#icon-iconfontjiantou1"></use>
+				</svg>
+			</a>
+			<span>注册</span>
+		</header>
+
+		<section id="container">
+			<ul class="tab">
+				<li class="imfor_wrt">
+					<a href="#"><span>信息填写</span></a>
+				</li>
+				<li class="data_wrt">
+					<a href="#"><span>资料填写</span></a>
+				</li>
+				<li class="login_now">
+					<a href="#"><span>立即登录</span></a>
+				</li>
+			</ul>
+
+			<div class="user-head">
+				<img src="../images/register/user-head.png" />
+				<p>更换头像</p>
+				<p class="finish_data">恭喜你注册成功，赶快完善资料吧</p>
+			</div>
+
+			<ul class="form" id="form">
+				<li>
+					<div class="nick_name">
+						<form class="mui-input-group">
+							<div class="mui-input-row">
+								<input type="text" name="nick_name" id="nick_name" class="mui-input-clear" value="" placeholder="请输入昵称" />
+								<span class="mui-icon mui-icon-contact"></span>
+							</div>
+						</form>
+					</div>
+				</li>
+
+				<el-collapse v-model="activeName" accordion>
+					<el-collapse-item title="请选择性别" name="1">
+						<ul class="mui-table-view mui-table-view-radio">
+							<li class="mui-table-view-cell mui-selected">
+								<a class="mui-navigate-right">男</a>
+							</li>
+							<hr />
+							<li class="mui-table-view-cell">
+								<a class="mui-navigate-right">女</a>
+							</li>
+						</ul>
+					</el-collapse-item>
+					<el-collapse-item title="请填写收件信息" name="2">
+						<form class="mui-input-group">
+							<div class="mui-input-row">
+								<input type="text" class="mui-input-clear recipient" placeholder="收件人">
+							</div>
+							<hr />
+							<div class="mui-input-row">
+								<input type="text" class="mui-input-clear re_phone" placeholder="收件电话">
+							</div>
+							<hr />
+							<div class="mui-input-row">
+								<input type="text" class="mui-input-clear re_address" placeholder="收件地址">
+							</div>
+						</form>
+					</el-collapse-item>
+					<!--<el-collapse-item title="立即实名认证" name="4">
+						<div>用户决策：根据场景可给予用户操作建议或安全提示，但不能代替用户进行决策；</div>
+					</el-collapse-item>-->
+				</el-collapse>
+
+				<li>
+					<div class="authorize">
+						<a href="#">
+							<input type="button" name="authorize" id="authorize" value="立即实名认证" style="text-align: left;" />
+						</a>
+					</div>
+				</li>
+
+			</ul>
+			<div class="login-box">
+				<input type="button" name="login" id="login" value="立即登录" />
+			</div>
+
+		</section>
+		<template>
+			<!-- `checked` 为 true 或 false -->
+			<el-checkbox v-model="checked">备选项</el-checkbox>
+		</template>
+		<script>
+			new Vue({
+				el: '#form',
+				data: function() {
+					return {
+						activeName: 'none',
+						radio7: '1',
+					};
+				}
+			})
+		</script>
+
+		<footer>
+			<span>登录既代表阅读并同意<a href="#">服务条款</a></span>
+		</footer>
+
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script>
+		//		alert(window.screen.availHeight)
+		mui.init();
+
+		mui.plusReady(function() {
+			plus.webview.currentWebview().setStyle({
+				scrollIndicator: 'none'
+
+			});
+
+			bWidth = plus.display.resolutionWidth;
+			bHeight = plus.display.resolutionHeight;
+			var footer = document.querySelector('footer');
+			footer.style.top = bHeight - 30 + 'px';
+			//			console.log(footer)
+			//  alert(bHeight - 50)
+		})
+	</script>
+	
+	<script type="text/javascript">
+		function isPasswd(s) {
+			//校验密码：只能输入6-14个字母、数字、下划线  
+			var patrn = /^(\w){6,14}$/;
+			if(patrn.test(s)) {
+				//正则判断成功
+				return true
+				//				
+			} else {
+				mui.alert('请输入6-14位密码！', '提示')
+				return false
+			}
+		}
+
+		var nickName = document.getElementById("nick_name");
+		var gender = document.querySelector(".mui-selected a");//mui-selected
+		var recipient = document.querySelector('.recipient');
+		var re_phone = document.querySelector(".re_phone");
+		var re_address = document.querySelector(".re_address");
+		var loginBtn = document.getElementById("login");
+		loginBtn.onclick = function() {
+			isPasswd(pwdValue.value);
+			//			console.log(pwdValue.value);
+			
+			mui.ajax('http://server-name/login.php', {
+				data: {
+					nickName = nickName.value,//昵称
+					gender: gender.innerHTML,//性别
+					recipient: recipient.value,//收件人
+					phone: re_phone.value,//收件电话
+					address: re_address.value//收件地址
+				},
+				dataType: 'json', //服务器返回json格式数据
+				type: 'post', //HTTP请求类型
+				timeout: 10000, //超时时间设置为10秒；
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				success: function(data) {
+					if (data.state == 0) {
+						window.location.href='../muihtml.html';
+					}
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+//					...
+				},
+				error: function(xhr, type, errorThrown) {
+					//异常处理；
+					console.log(type);
+				}
+			});
+		}
+	</script>
+
+
+</html>

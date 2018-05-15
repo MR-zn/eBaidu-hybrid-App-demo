@@ -1,0 +1,153 @@
+/*comment*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	background-color: #f4f3ef;
+}
+
+ul,
+li {
+	list-style: none;
+}
+
+#container {
+	position: relative;
+	top: 0;
+	background: #f4f3ef;
+}
+
+header {
+	margin-top: 45px;
+	text-align: center;
+}
+
+header h1 {
+	font-family: "微软雅黑";
+	font-size: 27.6px;
+	font-weight: lighter;
+}
+
+.banner {
+	margin: auto;
+	margin-top: 50px;
+	display: block;
+}
+
+.login_form {
+	text-align: center;
+}
+
+.login_form li .uname-box,
+.login_form li .pswd-box {
+	height: 50px;
+	width: 83.574879%;
+	margin: 50px auto 0 auto;
+	position: relative;
+}
+
+.login_form li .pswd-box {
+	margin-top: 13px;
+}
+
+#username,
+#password {
+	background: #c3c2bf;
+	color: #fff;
+	padding-left: 50px;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: 24px 24px;
+	background-position: 12px 12px;
+	border-radius: 5px;
+	display: block;
+	box-sizing: border-box;
+	border: none;
+}
+
+#username {
+	background-image: url(../images/login/phone.png);
+}
+
+#password {
+	background-image: url(../images/login/lock.png);
+}
+
+.icon-eyes {
+	font-size: 24px;
+	color: #fff;
+	position: absolute;
+	right: 35px;
+	top: 13px;
+	cursor: pointer;
+}
+
+#username::-webkit-input-placeholder,
+#password::-webkit-input-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #fff;
+}
+
+.login-box {
+	height: 40px;
+	width: 300px;
+	margin: 35px auto 0;
+	text-align: center;
+}
+
+#login {
+	width: 100%;
+	height: 100%;
+	border-radius: 20px;
+	color: #fff;
+	background: #76c056;
+}
+
+#login:active {
+	background: #477235;
+}
+
+.forget_reg {
+	width: 300px;
+	height: 21px;
+	margin: 15px auto 0;
+	position: relative;
+}
+
+.forget_reg span {
+	position: absolute;
+}
+
+.forget_reg .forget {
+	left: 0;
+}
+
+.forget_reg .register {
+	right: 0;
+}
+
+.forget_reg span a {
+	font-size: 15px !important;
+	color: #ff7f00;
+}
+
+footer {
+	width: 100%;
+	position: absolute;
+	top: 648.1818px;
+	text-align: center;
+}
+
+footer span {
+	color: #999999;
+	font-size: 13.5px;
+}
+
+footer span a {
+	color: #5bb630;
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/sidemenu-sideweb.css"/>
+	</head>
+
+	<body id="user-msg">
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span>返回</span></a>
+			<h1 class="mui-title">我的消息</h1>
+		</header>
+		<section id="container">
+			<ul class="user-msg">
+				<li class="card">
+					<ul>
+						<li class="head-img">
+							<a><img src="../images/ddm.png"/></a>
+						</li>
+						<li>
+							<a href="user-msg-more.html" class="name">1231241</a>
+							<a href="user-msg-more.html" class="content">大苏打撒旦大苏打撒旦大苏打撒旦大苏打撒旦大苏打撒旦</a>
+						</li>
+						<li>
+							<a class="new">
+								刚刚
+							</a>
+						</li>
+					</ul>
+					<div class="del">删除</div>
+				</li>
+				<li class="card">
+					<ul>
+						<li class="head-img">
+							<a><img src="../images/ddm.png"/></a>
+						</li>
+						<li>
+							<a href="user-msg-more.html" class="name">1231241</a>
+							<a href="user-msg-more.html" class="content">大苏打撒旦大苏打撒旦大苏打撒旦大苏打撒旦大苏打撒旦</a>
+						</li>
+						<li>
+							<a class="new">
+								刚刚
+							</a>
+						</li>
+					</ul>
+					<div class="del">删除</div>
+				</li>
+				<li class="card">
+					<ul>
+						<li class="head-img">
+							<a><img src="../images/ddm.png"/></a>
+						</li>
+						<li>
+							<a href="user-msg-more.html" class="name">1231241</a>
+							<a href="user-msg-more.html" class="content">大苏打撒旦大苏打撒旦大苏打撒旦大苏打撒旦大苏打撒旦</a>
+						</li>
+						<li>
+							<a class="">
+								2.29
+							</a>
+						</li>
+					</ul>
+					<div class="del"><a>删除</a></div>
+				</li>
+			</ul>
+		</section>
+
+	</body>
+	<script src="../js/comment.js"></script>
+	<script src="../js/mui.min.js"></script>
+	<script src="../js/sidemenu.js"></script>
+	<script>
+		mui.init({
+		  pullRefresh : {
+		    container:"#container",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+		    down : {
+		      style:'circle',//必选，下拉刷新样式，目前支持原生5+ ‘circle’ 样式
+		      color:'#2BD009', //可选，默认“#2BD009” 下拉刷新控件颜色
+		      height:'50px',//可选,默认50px.下拉刷新控件的高度,
+		      range:'100px', //可选 默认100px,控件可下拉拖拽的范围
+		      offset:'0px', //可选 默认0px,下拉刷新控件的起始位置
+		      auto: false,//可选,默认false.首次加载自动上拉刷新一次
+		      callback :pullfresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+		    }
+		  }
+		});
+		
+		
+		//下拉刷新
+		var con = document.querySelector('#container .user-msg');
+		function pullfresh(){
+//			console.log(1);
+			var liElement = '<li class="card">'+
+					'<ul>'+
+						'<li class="head-img">'+
+							'<a href=""><img src="../images/ddm.png"/></a>'+
+						'</li>'+
+						'<li>'+
+							'<a href="user-msg-more.html" class="name">1231241</a>'+
+							'<a href="user-msg-more.html" class="content">大苏打撒旦大苏打撒旦大苏打撒旦大苏打撒旦大苏打撒旦</a>'+
+						'</li>'+
+						'<li>'+
+							'<a class="new" href="">刚刚</a>'+
+						'</li>'+
+					'</ul>'+
+					'<div class="del"><a>删除</a></div>'+
+				'</li>';
+	
+			con.innerHTML = liElement + con.innerHTML;
+	        
+			mui('#container').pullRefresh().endPulldown();
+		}
+		 
+		mui.plusReady(function(){
+			plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
+		})
+		
+		var cards = document.querySelectorAll('.card');
+		var dels = document.querySelectorAll('.del');
+		for (var i = 0,len=cards.length;i<len;i++) {
+			cards[i].index = i;
+			cards[i].addEventListener('swipeleft',function(){
+//				console.log(this.index);
+				for (var j = 0,len=cards.length;j<len;j++) {
+					dels[j].classList.remove('move');
+				}
+				dels[this.index].classList.add('move');
+			})
+			cards[i].addEventListener('tap',function(){
+				if(hasClass(dels[this.index],'move')){
+					dels[this.index].classList.remove('move');
+				}else{
+//					console.log(2)
+				}
+			})
+		}
+		for (var i = 0,len=cards.length;i<len;i++) {
+			dels[i].index = i;
+			dels[i].addEventListener('click',function(){
+				cards[this.index].parentNode.removeChild(cards[this.index]);
+			})
+		}
+		document.addEventListener('tap',function(){
+			for (var j = 0,len=cards.length;j<len;j++) {
+				dels[j].classList.remove('move');
+			}
+		})
+	</script>
+</html>

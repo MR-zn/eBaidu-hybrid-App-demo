@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/order.css"/>
+	</head>
+	<!--历史订单-->
+	<body id="history">
+		<ul class="card">
+			<li>
+				<a>订单号：<span>9528482</span></a>
+				<a>交易待完成</a>
+			</li>
+			<li>
+				<div class="img"><img src="../images/ddm.png"/></div>
+				<div class="info">
+					<a>4.18 18:00</a>
+					<a>[站点A]小件立即送达</a>
+					<a>安抚hi奥法还哦放大后i</a>
+				</div>
+				<div class="state">
+					<a>金额0元</a>
+				</div>
+			</li>
+			<li>
+				<a class="confirm">确认收货</a>
+				<a class="connect">联系他</a>
+			</li>
+		</ul>
+		<ul class="card">
+			<li>
+				<a>订单号：<span>9528482</span></a>
+				<a>交易待完成</a>
+			</li>
+			<li>
+				<div class="img"><img src="../images/ddm.png"/></div>
+				<div class="info">
+					<a>4.18 18:00</a>
+					<a>[站点A]小件立即送达</a>
+					<a>安抚hi奥法还哦放大后i</a>
+				</div>
+				<div class="state">
+					<a>金额0元</a>
+				</div>
+			</li>
+			<li>
+				<a class="comment">立即评价</a>
+				<a class="connect">联系他</a>
+				<a class="del">删除订单</a>
+			</li>
+		</ul>
+		
+		
+		
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init({
+			  pullRefresh : {
+			    container:"#confirm",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+			    down : {
+			      style:'circle',//必选，下拉刷新样式，目前支持原生5+ ‘circle’ 样式
+			      color:'#2BD009', //可选，默认“#2BD009” 下拉刷新控件颜色
+			      height:'50px',//可选,默认50px.下拉刷新控件的高度,
+			      range:'100px', //可选 默认100px,控件可下拉拖拽的范围
+			      offset:'0px', //可选 默认0px,下拉刷新控件的起始位置
+			      auto: false,//可选,默认false.首次加载自动上拉刷新一次
+			      callback :pullfresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+			    }
+			  }
+			})
+			
+			//下拉刷新
+			var con = document.querySelector('#confirm');
+			function pullfresh(){
+				var liElement = '<a>123</a>';
+		
+				con.innerHTML = liElement + con.innerHTML;
+		        
+				mui('#confirm').pullRefresh().endPulldown();
+			}
+			
+			mui.plusReady(function(){
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
+			})
+		</script>
+	</body>
+
+</html>

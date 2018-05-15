@@ -1,0 +1,135 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	background-color: #f4f3ef;
+}
+
+ul,
+li {
+	list-style: none;
+}
+
+#container {
+	position: relative;
+	top: 0;
+	background: #f4f3ef;
+}
+
+
+header h1 {
+	font-family: "微软雅黑";
+	font-weight: lighter;
+}
+
+header {
+	/*background: #5bb630;*/
+	background: #fff;
+	/*height: 190px;*/
+}
+
+header .btnBar {
+	height: 30px;
+	position: relative;
+	text-align: center;
+}
+
+header .btnBar a {
+	font-size: 13px;
+	color: #5bb630;
+	line-height: 30px;
+	position: absolute;
+	padding: 0 12px;
+}
+
+header .btnBar a.back {
+	left: 0px;
+}
+
+header .btnBar a.detail {
+	right: 0px;
+}
+
+header .btnBar span {
+	line-height: 30px;
+}
+
+.balance_title {
+	text-align: center;
+}
+
+.balance_title span {
+	font-size: 13px;
+	color: #fff;
+}
+
+.balance_amount {
+	height: 100px;
+	text-align: center;
+}
+
+.balance_amount span {
+	color: #fff;
+	font-size: 37.75px;
+	line-height: 100px;
+}
+
+.container {
+	width: 95%;
+	margin: 12px auto 0;
+	background: #fff;
+}
+
+.detail_item {
+	height: 80px;
+	position: relative;
+}
+
+.money_info {
+	padding-top: 15px;
+	padding-left: 11.441647597254%;
+	line-height: 25px;
+	float: left;
+}
+
+.money_operate span {
+	color: #ff7f00;
+	font-size: 13px;
+}
+
+.money_date span {
+	color: #000;
+	font-size: 13px;
+}
+
+.money_date .time {
+	margin-left: 8px;
+}
+
+.money_num {
+	float: right;
+}
+
+.money_num {
+	line-height: 80px;
+	padding-right: 11.441647597254%;
+	font-size: 17px;
+	font-weight: bold;
+}
+
+.detail_item::after {
+	content: '';
+	display: block;
+	position: absolute;
+	width: 87%;
+	border: 1px solid #f6f4f4;
+	left: 5%;
+	bottom: 0;
+}
+
+.detail_item:last-child::after {
+	content: none;
+}

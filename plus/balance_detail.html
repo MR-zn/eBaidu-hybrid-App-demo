@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>e摆渡 - 让顺手变为可能</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="stylesheet" href="../css/mui.css">
+        <!--App自定义的css-->
+        <!--<link rel="stylesheet" type="text/css" href="../css/app.css"/>-->
+        <!-- 引入样式 -->
+        <link rel="stylesheet" href="../css/plugin/elementui.css">
+        <link rel="stylesheet" type="text/css" href="../css/myWallet/balance_detail.css" />
+        <script src="../js/iconfont.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../js/plugin/vue.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../js/plugin/elementui.js" type="text/javascript" charset="utf-8"></script>
+        <style>
+            .icon {
+                width: 1em;
+                height: 1em;
+                vertical-align: -0.15em;
+                fill: currentColor;
+                overflow: hidden;
+            }
+
+            .el-button--primary {
+                background-color: #ff7f00;
+                border-color: #ff7f00;
+            }
+        </style>
+    </head>
+
+    <body>
+        <section>
+
+            <header>
+                <div class="btnBar">
+                    <a class="back mui-action-back mui-icon mui-icon-left-nav mui-pull-left">
+                        <!--<svg class="icon icon-jiantou" aria-hidden="true">
+                            <use xlink:href="#icon-iconfontjiantou1"></use>
+                        </svg>-->
+                        返回</a>
+                    <span>零钱明细</span>
+                    <!--<a href="#" class="detail">余额明细</a>-->
+                </div>
+            </header>
+
+            <div class="container">
+                <div class="detail_item">
+                    <div class="money_info">
+                        <div class="money_operate">
+                            <span>现金提现</span>
+                        </div>
+                        <div class="money_date">
+                            <span class="date">2018-03-21</span>
+                            <span class="time">12:15:09</span>
+                        </div>
+                    </div>
+                    <div class="money_num">
+                        <span>-2.00</span>
+                    </div>
+                </div>
+                <div class="detail_item">
+                    <div class="money_info">
+                        <div class="money_operate">
+                            <span>现金提现</span>
+                        </div>
+                        <div class="money_date">
+                            <span class="date">2018-03-21</span>
+                            <span class="time">12:15:09</span>
+                        </div>
+                    </div>
+                    <div class="money_num">
+                        <span>-2.00</span>
+                    </div>
+                </div>
+                <div class="detail_item">
+                    <div class="money_info">
+                        <div class="money_operate">
+                            <span>现金提现</span>
+                        </div>
+                        <div class="money_date">
+                            <span class="date">2018-03-21</span>
+                            <span class="time">12:15:09</span>
+                        </div>
+                    </div>
+                    <div class="money_num">
+                        <span>-2.00</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </body>
+    <script src="../js/mui.min.js"></script>
+    <script>
+        //		alert(window.screen.availHeight)
+        mui.init();
+        mui.plusReady(function() {
+            plus.webview.currentWebview().setStyle({
+                scrollIndicator: 'none'
+            });
+            //			bWidth = plus.display.resolutionWidth;
+            //			bHeight = plus.display.resolutionHeight;
+            //			var footer = document.querySelector('footer');
+            //			footer.style.top = bHeight - 30 + 'px';
+            //			alert(bHeight - 50);
+        })
+
+        //传入toggle参数，用户无需关心当前是显示还是隐藏状态，mui会自动识别处理；
+    </script>
+
+</html>

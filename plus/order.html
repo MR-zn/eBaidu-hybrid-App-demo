@@ -1,0 +1,247 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/order.css"/>
+	</head>
+		
+	<body id="order">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span>返回</span></a>
+			<h1 class="mui-title">我的订单</h1>
+		</header>
+		
+		<nav id="nav" class="mui-bar mui-bar-tab bg">
+			<a class="mui-tab-item mui-active" href="order-complete.html" id="stock">
+				<span class="mui-tab-label">已接单</span>
+			</a>
+			<a class="mui-tab-item" href="order-confirm.html" id="a">
+				<span class="mui-tab-label">待摆渡</span>
+			</a>
+			<a class="mui-tab-item" href="order-comment.html" id="b">
+				<span class="mui-tab-label">待确认</span>
+			</a>
+			<a class="mui-tab-item" href="order-history.html" id="c">
+				<span class="mui-tab-label">历史订单</span>
+			</a>
+		</nav>
+		
+		<section id="container">
+			<ul class="card">
+				<li>
+					<a>订单号：<span>9528482</span></a>
+					<a>订单等待摆渡</a>
+				</li>
+				<li>
+					<div class="img"><img src="../images/ddm.png"/></div>
+					<div class="info">
+						<a>4.18 18:00</a>
+						<a>[站点A]小件立即送达</a>
+						<a>安抚hi奥法还哦放大后i</a>
+					</div>
+					<div class="state">
+						<a>金额0元</a>
+					</div>
+				</li>
+				<li>
+					<a class="colse">取消订单</a>
+				</li>
+			</ul>
+			<ul class="card">
+				<li>
+					<a>订单号：<span>9528482</span></a>
+					<a>订单等待摆渡</a>
+				</li>
+				<li>
+					<div class="img"><img src="../images/ddm.png"/></div>
+					<div class="info">
+						<a>4.18 18:00</a>
+						<a>[站点A]小件立即送达</a>
+						<a>安抚hi奥法还哦放大后i</a>
+					</div>
+					<div class="state">
+						<a>金额0元</a>
+					</div>
+				</li>
+				<li>
+					<a class="colse">取消订单</a>
+				</li>
+			</ul> 
+		</section>
+		
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/comment.js"></script>
+		<script type="text/javascript">
+			mui.init({
+			  pullRefresh : {
+			    container:"#container",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
+			    down : {
+			      style:'circle',//必选，下拉刷新样式，目前支持原生5+ ‘circle’ 样式
+			      color:'#2BD009', //可选，默认“#2BD009” 下拉刷新控件颜色
+			      height:'50px',//可选,默认50px.下拉刷新控件的高度,
+			      range:'100px', //可选 默认100px,控件可下拉拖拽的范围
+			      offset:'0px', //可选 默认0px,下拉刷新控件的起始位置
+			      auto: false,//可选,默认false.首次加载自动上拉刷新一次
+			      callback :pullfresh //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+			    }
+			  }
+			})
+			
+			//下拉刷新
+			var con = document.querySelector('#container');
+			function pullfresh(){
+				var liElement = '<a>123</a>';
+		
+				con.innerHTML = liElement + con.innerHTML;
+		        
+				mui('#container').pullRefresh().endPulldown();
+			}
+			
+			mui.plusReady(function(){
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
+			})
+			
+			var aS = document.querySelectorAll('#nav a');
+			for (var i=0,len=aS.length;i<len;i++) {
+				aS[i].index = i;
+				(i==0)?aS[i].sw = false:aS[i].sw = true;
+			}
+			
+			mui('.mui-bar-tab').on('tap', 'a', function(){
+				if(this.sw){
+					showOrder.call(this)
+				}else{
+//					console.log(this.sw);
+				}
+			});
+			
+			function showOrder(){
+				for (var i=0,len=aS.length;i<len;i++) {
+					aS[i].sw = true;
+				}
+				this.sw = false;
+				if(this.index==0){
+					console.log(this.index)
+				}else if(this.index==1){
+					console.log(this.index)
+				}else if(this.index==2){
+					console.log(this.index)
+				}else if(this.index==3){
+					console.log(this.index)
+				}
+			}
+//			mui.init({
+//				swipeBack: false,
+//				statusBarBackground: "#7ac256"
+//			});
+//			var menu = null,
+//			main = null;
+//			var showMenu = false;
+//			var subpages = [
+//			'order-complete.html',
+//			'order-confirm.html',
+//			'order-comment.html',
+//			'order-history.html'
+//			];
+//			var subpage_style = {
+//			top: '80px',
+//			bottom: '0px'
+//			};
+//			var aniShow = {};
+//
+//
+//			
+//			
+//			function setStatusBar() {
+//			//iOS设置内容顶部高度
+//			if(mui.os.ios && document.querySelector(".mui-bar-nav")) {
+//			var topoffset;
+//			if(plus.navigator.isImmersedStatusbar()) { // 兼容immersed状态栏模式
+//			topoffset = (Math.round(plus.navigator.getStatusbarHeight()) + 40) + 'px';
+//			}
+//			
+//			
+//			var immersed = 0;
+//			var ms = (/Html5Plus\/.+\s.∗(Immersed\/(\d+\.?\d∗).∗)/gi).exec(navigator.userAgent);
+//			if(ms && ms.length >= 3) { // 当前环境为沉浸式状态栏模式
+//			immersed = parseFloat(ms[2]); // 获取状态栏的高度
+//			}
+//			
+//			
+//			topoffset = (immersed + 40) + 'px';
+//			document.querySelector(".mui-bar-nav").style.paddingTop = immersed + 'px';
+//			document.querySelector(".mui-bar-nav").style.height = topoffset;
+//			return topoffset;
+//			}
+//			}
+//			
+//			
+//			//创建子页面，首个选项卡页面显示，其它均隐藏；
+//			mui.plusReady(function() {
+//				
+//				plus.navigator.setStatusBarBackground("#7ac256");
+//				//iOS设置内容顶部高度
+//				if(mui.os.ios) {
+//					subpage_style.top = setStatusBar();
+//				}
+//				var self = plus.webview.currentWebview();
+//				for(var i = 0; i < 3; i++) {
+//				var temp = {};
+//				//plus.webview.create预创建界面
+//				var sub = plus.webview.create(subpages[i], subpages[i], subpage_style);
+//				if(i > 0) {
+//					sub.hide();
+//				} else {
+//					temp[subpages[i]] = "true";
+//					mui.extend(aniShow, temp); //mui.extend将两个对象合并成aniShow一个对象。 
+//				}
+//				self.append(sub); 
+//				//self.append当子页面内容重复加载几次或者刷新几次后，父页面的返回功能不是直接返回父页面之前的页面，
+//				//通过self.append方法创建的页面,会先把子页面的历史返回一遍
+//				} 
+//				//仅支持竖屏显示
+//				plus.screen.lockOrientation("portrait-primary");
+//				main = plus.webview.currentWebview();
+//				//当前激活选项
+//				var activeTab = subpages[0];
+//				var title = document.getElementById("title");
+//				
+//				
+//				//选项卡点击事件
+//				mui('.mui-bar-tab').on('tap', 'a', function(e) {
+//					var targetTab = this.getAttribute('href');
+//					if(targetTab == activeTab) {
+//						return;
+//					}
+//					//更换标题
+//				
+//				
+//					//显示目标选项卡
+//					//若为iOS平台或非首次显示，则直接显示
+//					if(mui.os.ios || aniShow[targetTab]) {
+//						plus.webview.show(targetTab);
+//					} else {
+//					//否则，使用fade-in动画，且保存变量
+//						var temp = {};
+//						temp[targetTab] = "true";
+//						mui.extend(aniShow, temp);
+//						plus.webview.show(targetTab, "fade-in", 200);
+//					}
+//					//隐藏当前;
+//					plus.webview.hide(activeTab);
+//					//更改当前活跃的选项卡
+//					activeTab = targetTab;
+//				});
+//			
+//			
+//			});
+			
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/comment.css"/>
+		<link rel="stylesheet" type="text/css" href="css/reset.css">
+		<link rel="stylesheet" type="text/css" href="index.css"/>
+	</head>
+
+	<body>
+		<div id="show-once"> 
+			<header>你好，欢迎使用e摆渡<a><img src="images/into-user.png"/></a></header>
+			<footer>
+				<a>亲爱的用户，您已成功摆渡2件！</a>
+			</footer>
+			<section class="position"><img src="images/enter-position2.png"/><a>获取定位中</a></section>
+			<section class="container">
+				<a class="putweb"><img src="images/enter-position.png"/>我要发布</a>
+				<a class="getweb"><img src="images/flag.png"/>我要顺手带</a>
+			</section>
+			<div id="allmap"></div> 
+		</div>
+		<!-- 侧滑导航根容器 -->
+		<div class="mui-off-canvas-wrap">
+		  <!-- 主页面容器 -->
+		  <div class="mui-inner-wrap">
+		    <!-- 主页面标题 -->
+				<header id="header" class="mui-bar mui-bar-nav">
+			      	<a class="mui-icon mui-action-menu mui-icon-bars mui-pull-left" id="navBtn"></a>
+			      	<nav id="nav" class="mui-bar-tab mui-title">
+					    <a id="getlist" class="mui-tab-item mui-active">
+					        <span>接单</span>
+					    </a>
+					    &nbsp;|&nbsp;
+					    <a id="putlist" class="mui-tab-item">
+					        <span>发布</span>
+					    </a>
+				  	</nav>
+			    </header>
+			    <footer id="footer" class="mui-bar mui-bar-footer">
+			    	<div class="showup">
+					    <a href="plus/user-msg.html" class="mui-pull-left footer-btn footer-left new">
+					        <img class="msg" src="images/msg.png"/>
+					        <span class="mui-icon word">消息</span>
+					    </a>
+					    <a href="plus/order.html" class="mui-pull-right footer-btn footer-right new">
+					        <span class="mui-icon word">订单</span>
+					        <img class="list" src="images/list.png"/>
+					    </a>
+						<div id="showup"><span class="mui-icon mui-icon-arrowup"></span></div>
+						<div class="putlist">
+							<div class="list-way">
+								<span>我要接单</span>
+							</div>
+							<div class="list-way mui-hidden"> 
+								<span>我要发布</span>
+							</div>
+						</div>
+						<div id="backPosi"><img src="images/reset.png"/></div>
+					</div>
+				</footer>					
+		    	<div id="container">
+			    	<div id="page_fir" class="index-page">
+			    		<!--发单页-->
+			    		<ul class="putlist-info">
+			    			<li class="add-place"><a href="plus/add-newPlace.html">添加收件地址</a></li>
+			    			<li class="info-fir">
+			    				<ul class="putlist-info-user">
+			    					<li>
+			    						<ul class="show-info">
+			    							<li>收件人：<span>张三</span>
+			    								<a href="plus/change-uPlace.html" class="info-right change-pack-info">更改收件信息 >></a>
+			    							</li>
+			    							<li>收件电话：<span>158165165156</span></li>
+			    							<li>收件地址：<span>包括VS的比赛的话佛山的话佛山分行副书记范跑跑分行副书记范跑跑发击破沙发沙发角色批发价</span></li>
+			    						</ul>
+			    					</li>
+			    					<li id="date" class="mui-table-view-cell">
+			    						<a class="mui-navigate-right get-pack-time">收件时间：<span class="value">(12:00送达)</span></a>
+			    					</li>
+			    				</ul>
+			    			</li>
+			    			<li class="place-info">
+			    				<ul class="place-info">
+			    					<li id="choose-place" class="mui-table-view-cell">
+			    						<a class="mui-navigate-right">选择代拿地点<span class="info-right info-right-sec value">地点11A</span></a>
+			    					</li>
+			    					<li class="mui-table-view-cell">
+			    						<a class="mui-navigate-right">物件信息 <span>(输入验证短信及上传个人实名认证截图)</span></a>
+			    					</li>
+			    					<li class="mui-table-view-cell">
+			    						<a class="mui-navigate-right">留言 <span>(选填，输入您想说的)</span></a>
+			    					</li>
+			    				</ul>
+			    			</li>
+			    			<li class="goods-info">
+			    				<ul class="goods-info">
+			    					<li id="choose-size" class="mui-table-view-cell">
+			    						<a class="mui-navigate-right">预估物件<span class="info-right info-right-sec value">小件</span></a>
+			    					</li>
+			    					<li id="more-info" class="mui-table-view-cell">
+			    						<a class="mui-navigate-right">是否易碎<span class="info-right info-right-sec value">否</span></a>
+			    					</li>
+			    				</ul>
+			    			</li>
+			    			<li class="price">
+			    				<ul class="price">
+			    					<li>系统估价<a class="info-right">首件免单：<span>0</span>元</a></li>
+			    				</ul>
+			    			</li>
+			    		</ul>
+			    	</div>
+			    	<div id="page_sec" class="index-page">
+			    		<!--接单页-->
+			    		<div id="map"></div>
+			    		<div class="search-box">
+			    			<form class="mui-input-group">
+			    			<div id="r-result" class="place-info mui-input-row">
+				    			<input type="text" class="mui-input-clear" id="suggestId" placeholder="出发" />
+				    			<div class="position">获取定位</div>
+				    		</div>
+				    		<div id="searchResultPanel" class="searchResultPanel" ></div>
+				    		<div id="r-result2" class="place-info mui-input-row">
+				    			<input type="text" class="mui-input-clear" id="suggestId2" placeholder="输入目的地" />
+				    			<div class="more"><span class="mui-icon mui-icon-arrowdown"></span></div>
+				    			<ul class="list show">
+				    				<!--<li><a>菜鸟驿站(温职院生活区内优纳学驾中心)</a></li>
+				    				<li><a>天天快递(温大B区)</a></li>-->
+				    			</ul>
+				    		</div>
+				    		<!--<div id="searchResultPanel2" class="searchResultPanel" ></div>-->
+				    		</form>
+			    		</div>
+			    		<a class="backList mui-hidden">返回订单列表</a>	
+			    	</div>
+		    	</div>  
+			</div>
+		</div>
+		 
+		<div class="succed mui-hidden">
+			<div>
+				<div>您的订单消息已发布成功！</div>
+				<div>摆渡人会尽快接单，请您耐心等待~</div>
+				<div><img src="images/ren.png"/></div>
+				<div class="close">×</div>
+			</div>
+		</div>
+		
+		<div id="show-order" class="mui-hidden"> 
+			<div>
+				<ul class="mui-bar-tab">
+					<li><a class="mui-tab-item mui-active">离我寝室最近</a></li>
+					<li><a class="mui-tab-item">离目的地最近</a></li>
+					<li><a class="mui-tab-item">时间筛选</a></li>
+				</ul>
+				<div class="all-order">
+					<div class="cTime mui-hidden" id="cTime">
+						选择时间点
+						<input type="text" name="time" disabled="disabled" class="time" value="" />
+						<span class="mui-icon mui-icon-arrowdown arrow"></span>
+						<span class="mui-icon mui-icon-loop reset"></span>
+					</div>
+					<ul class="all-order">
+						<!--<li>
+							<div>
+								<div class="top">
+									<div class="time-only">
+										<a>04-11 10：00整</a>
+										<a>送达时间</a>
+									</div>
+								</div>
+								<div class="center">
+									<a class="place">快递站点：站点A菜鸟驿站</a>
+									<a class="place">上海华东大学北校区站点A菜鸟驿站</a>
+								</div>
+								<div class="bottom">
+									<a class="send-place">送件地址：上海交通大学寝室楼1号155</a>
+									<div>
+										<div>查看路线</div>
+									</div>
+									<div>
+										<div>接单摆渡</div>
+									</div>
+								</div>
+							</div>
+						</li>-->
+					</ul>
+				</div>
+				<div class="close">×</div>
+			</div>
+		</div>
+
+		<script src="js/mui.min.js"></script>
+		<script src="js/picker.min.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=6gK6hr0lk5LEx7bltIUAeYkHvzMULQDq"></script>
+        <script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
+		<script src="js/update.js" type="text/javascript" charset="utf-8"></script>
+		<script src="data.js"></script>
+		<script src="index.js"></script>
+		<script>
+			mui.init({
+				statusBarBackground: '#f7f7f7'
+			});
+			var aniShow = "pop-in";
+			var menu = null,
+				showMenu = false;
+			var isInTransition = false;
+			var _self;
+			//只有ios支持的功能需要在Android平台隐藏；
+			if(mui.os.android) {
+				var list = document.querySelectorAll('.ios-only');
+				if(list) {
+					for(var i = 0; i < list.length; i++) {
+						list[i].style.display = 'none';
+					}
+				}
+				//Android平台暂时使用slide-in-right动画
+				if(parseFloat(mui.os.version) < 4.4) {
+					aniShow = "slide-in-right";
+				}
+			}
+			//初始化，并预加载webview模式的选项卡			
+			function preload() {
+
+				var menu_style = {
+					left: "-80%",
+					width: '80%',
+					popGesture: "none",
+					render:"always"
+				};
+
+				if(mui.os.ios) {
+					menu_style.zindex = -1;
+				}
+
+				//处理侧滑导航，为了避免和子页面初始化等竞争资源，延迟加载侧滑页面；
+				menu = mui.openWindow({
+					id: 'index-menu',
+					url: 'index-menu.html',
+					styles: menu_style,
+					show: {
+						aniShow: 'none' 
+					},
+					waiting: {
+						autoShow: false
+					}
+				});
+			}
+			
+			
+			var more = document.querySelector('#page_sec .more');//arrowdown
+			var list = document.querySelector('#page_sec .list');//站点列表
+			var	showOrder = document.querySelector('#show-order');//订单窗口
+			var uOrder = showOrder.querySelector('ul.all-order');
+			var a = showOrder.querySelectorAll('.mui-tab-item');//筛选条件
+			var sBox = document.querySelector('.search-box');
+			var backList = document.querySelector('.backList');
+			
+			//地图参数
+			var map = new BMap.Map("map");//地图
+			var nowP = null;//个人定位
+			var kdMarkers = null;//快递点集合
+			var result = [];//排序id集合
+			var GtPosi = null;//用户选择的目的地
+			
+			
+			//创建默认地址信息
+			var obj = {
+						def: "温州市瓯海区温州职业技术学院茶山校区-初阳公寓",
+						roomNum: 919,
+						lng: 120.7089090000,
+				      	lat: 27.9300730000
+					}
+			var objPosi = new BMap.Point(obj.lng, obj.lat);
+			
+			//路线参数
+			var start = null;//起点
+			var end = null;//终点
+			var thought = [];//经过点
+			var Gposi = null;//用户选择的目的地
+			
+			//gps定位及转换
+			function translatePoint(position) {
+	            var currentLon = position.coords.longitude;
+	            var currentLat = position.coords.latitude;
+	            var gpsPoint = new BMap.Point(currentLon, currentLat);
+	            BMap.Convertor.translate(gpsPoint, 2, initMap); //坐标转换
+	        }
+			//个人定位点设置
+			function setNP(){
+				var myIcon = new BMap.Icon("images/startIcon.png",new BMap.Size(24,30));
+				var startIcon = new BMap.Icon("images/my-position.png", new BMap.Size(24,30));
+				var marker = new BMap.Marker(nowP,{icon:myIcon});
+				map.addOverlay(marker);
+			}
+			function initMap(point) {
+				nowP = point; 
+				start = point;
+				map.centerAndZoom(point, 16);
+				
+				
+				setNP(); 
+				
+				
+				// 创建地理编码实例      
+				var myGeo = new BMap.Geocoder();      
+				// 根据坐标得到地址描述    
+				var innertPosi = document.querySelector('.position a');
+				myGeo.getLocation(point, function(result){      
+				    if (result){      
+				    	innertPosi.innerText = result.address;  
+				    }else{
+				    	innertPosi.innerText = "获取定位失败！";
+				    }
+				});
+				
+				//获取定位
+				document.querySelector('#page_sec .position').addEventListener('tap',function(){
+					myGeo.getLocation(point, function(result){ 
+						if(result){
+							document.querySelector('#suggestId').placeholder = result.address;
+							map.clearOverlays();
+							setNP();
+							setKdMaker(data);
+						}else{
+							document.querySelector('#suggestId').placeholder = "获取定位失败！";
+						}
+					});
+					map.panTo(point);
+				})
+			}
+			
+			//搜索api
+			var myValue;
+			var searchResultPanel = document.querySelector('#searchResultPanel');
+			var ac = new BMap.Autocomplete(    //建立一个自动完成的对象
+				{"input" : "suggestId"
+				,"location" : map
+			});
+			var ac2 = new BMap.Autocomplete(    //建立一个自动完成的对象
+				{"input" : "suggestId2"
+				,"location" : map
+			});
+			//起点输入框事件
+			ac.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+				var _value = e.item.value;
+				myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+//				searchResultPanel.innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+				
+				setPlace();
+			});
+			//目的地输入框事件
+			ac2.addEventListener("onconfirm", function(e) {    //鼠标点击下拉列表后的事件
+				var _value = e.item.value;
+				myValue = _value.province +  _value.city +  _value.district +  _value.street +  _value.business;
+//				searchResultPanel.innerHTML ="onconfirm<br />index = " + e.item.index + "<br />myValue = " + myValue;
+				
+				setPlace2();
+			});
+		
+			//起点输入框 
+			function setPlace(){
+				
+				map.clearOverlays();    //清除地图上所有覆盖物
+				setKdMaker(data);
+				
+				function myFun(){
+					var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果 
+					var myIcon = new BMap.Icon("images/startIcon.png", new BMap.Size(24,30));
+					map.centerAndZoom(pp, 15);
+					map.addOverlay(new BMap.Marker(pp,{icon:myIcon}));    //添加标注
+					
+					start = pp;
+					
+				}
+				var local = new BMap.LocalSearch(map, { //智能搜索
+				  onSearchComplete: myFun
+				});
+				local.search(myValue);
+				
+				 
+			}
+			
+			//目的地输入框
+			function setPlace2(){
+// 				map.clearOverlays();    //清除地图上所有覆盖物 
+				function myFun(){
+					var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果 
+					var myIcon = new BMap.Icon("images/thoughtIcon.png", new BMap.Size(24,30));
+					map.centerAndZoom(pp, 15);
+					map.addOverlay(new BMap.Marker(pp,{icon:myIcon}));    //添加标注 
+					
+					thought = [];
+					thought.push(pp);
+				}
+				var local = new BMap.LocalSearch(map, { //智能搜索
+				  onSearchComplete: myFun
+				});
+				local.search(myValue); 
+			}
+			//搜索api结束
+			
+			//arrowdown点击事件
+			more.addEventListener('tap',function(){
+				if(hasClass(list,'show')){
+					list.classList.remove('show');
+					more.classList.add('show');
+				}else{
+					list.classList.add('show');
+					more.classList.remove('show');
+				}
+			})
+			
+			//站点列表点击事件
+			Kd();
+			function Kd(){
+				//列出站点
+				for (var i = 0;i<data.length;i++) {
+					var ht = '<li><a>'+
+					data[i].place +
+					'</a></li>';
+					list.innerHTML = list.innerHTML + ht;
+				}
+				var aS = list.querySelectorAll('a');
+				var len = aS.length;
+				for (var j = 0;j<len;j++) {
+					
+					aS[j].index = j;
+					
+					//站点列表点击事件
+					aS[j].addEventListener('tap',function(){
+						document.querySelector('#suggestId2').placeholder = data[this.index].place;
+						var pp = new BMap.Point(data[this.index].lng, data[this.index].lat);
+						var marker = new BMap.Marker(pp);//,{icon:myIcon} 
+						map.panTo(pp);
+						GtPosi=pp;
+						list.classList.add('show');
+						more.classList.remove('show');
+					})
+				}
+			}
+			
+			//标记快递点
+			setKdMaker(data);
+			function setKdMaker(arr){
+				kdMarkers =[];
+				var len = arr.length;
+			  	for (var i = 0; i < len; i ++) {
+					var point = new BMap.Point(arr[i].lng, arr[i].lat);
+					var myIcon = new BMap.Icon("images/thoughtIcon.png", new BMap.Size(24,30));
+			  		var marker = new BMap.Marker(point,{icon:myIcon});
+			  		kdMarkers.push(marker);
+					map.addOverlay(marker); 
+				}
+			  	//快递点点击事件 
+				for (var i = 0,len=kdMarkers.length; i < len; i ++) {
+					kdMarkers[i].index = i; 
+					kdMarkers[i].addEventListener('click',function(){
+						showOrder.classList.remove('mui-hidden');
+						
+						Default();
+						Sort(objPosi,result,allOrder);
+						
+//						thought = [];
+						var p = new BMap.Point(arr[this.index].lng, arr[this.index].lat);
+						thought.push(p);
+						
+						map.panTo(p);
+					})
+				}
+				
+			}
+			
+			//设置订单弹出页a的点击事件
+			listATap();
+			function listATap(){
+				for (var j=0,len = a.length;j<len;j++) {
+					a[j].index = j;
+					a[j].addEventListener('tap',function(){ 
+						List(this.index,GtPosi);
+					})
+				}
+			}
+			//订单列表点击事件
+			function List(aId,posi){
+				var posi=posi;
+				uOrder.innerHTML = '';
+				if(aId==0){
+					document.querySelector('#cTime').classList.add('mui-hidden');
+					Sort(objPosi,result,allOrder);
+				}else if(aId==1){
+					document.querySelector('#cTime').classList.add('mui-hidden');
+					if (posi!=null) {
+						var pot = new BMap.Point(posi.lng,posi.lat);
+						Sort(pot,result,allOrder);
+					} else{
+						var ht = "<a>未选择目的地！</a>";
+						uOrder.innerHTML = ht;
+					}
+				}else if(aId==2){
+					document.querySelector('#show-order input.time').value = '';
+					document.querySelector('#cTime').classList.remove('mui-hidden');
+					showTime();
+					SortTime(result,allOrder);
+					
+				}
+			}
+			
+			
+			document.querySelector('#show-order .cTime .reset').addEventListener('tap',function(){
+				var time = document.querySelector('#show-order input.time');
+				SortTime(result,allOrder);
+				time.value = '';
+			})
+			//time
+			function SortTime(rel,data){
+				rel = [];
+				uOrder.innerHTML = '';
+				var len=data.length;
+				
+				
+				for (var i=0;i<len;i++) {
+					var str = data[i].time;
+					var result = str.split(' ');
+					var rStr = result[0]+ ' '+result[1];
+					data[i].ms = (new Date(rStr)).getTime();
+				}
+				
+				//添加所有订单id到数组
+				for (var i=0;i<len;i++) {
+					rel.push(data[i].id)
+				}
+				
+				//时间冒泡排序
+				var pre = null;
+				for(i=0;i<len;i++){
+			        for(j=0;j<len-1-i;j++){
+			        	pre = data[rel[j]].ms;
+			        	var next = data[rel[j+1]].ms;
+			            if(next<pre){
+			                var temp=rel[j];
+			                rel[j]=rel[j+1];
+			                rel[j+1]=temp;
+			            }
+			        }
+			    }
+				
+				//显示排序后的订单
+				for(var k=0;k<len;k++){
+					var str = data[rel[k]].time;
+					var rStr = str.substring(5,str.length);
+					var ht = '<li>'+
+								'<div>'+
+									'<div class="top">'+
+										'<div class="time-only">'+
+											'<a>' + rStr + '</a>'+
+											'<a>送达时间</a>'+
+										'</div>'+
+									'</div>'+
+									'<div class="center">'+
+										'<a class="place">快递站点：站点A菜鸟驿站</a>'+
+										'<a class="place">上海华东大学北校区站点A菜鸟驿站</a>'+
+									'</div>'+
+									'<div class="bottom">'+
+										'<a class="send-place">送件地址：' + data[rel[k]].place +'</a>'+
+										'<div>'+
+											'<div class="look-way">查看路线</div>'+
+										'</div>'+
+										'<div>'+
+											'<div>接单摆渡</div>'+
+										'</div>'+
+									'</div>'+
+								'</div>'+
+							'</li>';
+					uOrder.innerHTML = uOrder.innerHTML + ht;
+				}
+				
+				//查看路线点击事件
+				var ways = document.querySelectorAll('.look-way');
+				for (var h=0,len=ways.length;h<len;h++) {
+					ways[h].index = h;
+					ways[h].addEventListener('click',function(){
+						showOrder.classList.add('mui-hidden');
+						end = new BMap.Point(data[rel[this.index]].lng,data[rel[this.index]].lat);
+						showWay(start,end,thought);
+					})
+				}
+			}
+			
+			
+			//chooseTime
+			function chooseTime(t,data){
+				uOrder.innerHTML = '';
+				
+				var dRel = [];
+				var dLen = data.length;
+				for (var i=0;i<dLen;i++) {
+					var str = data[i].time;
+					var result = str.split(' ');
+					var mStr = result[0]+ ' '+result[1];
+					data[i].ms = (new Date(mStr)).getTime();
+					var rStr = parseInt(result[1].split(':'));
+					if (rStr >= t) {
+						dRel.push(data[i].id);
+					}
+				}
+				var len = dRel.length;
+				zRel = [];
+				qRel = [];
+				if(len>0){
+					for(var i=0;i<len;i++){
+						var pStr = data[dRel[i]].time;
+						var pResult = pStr.split(' ');
+						var pRStr = pResult[2];
+						
+					    if(pRStr=='整'){
+					        zRel.push(data[dRel[i]].id)
+					    }else if(pRStr=='前'){
+					    	qRel.push(data[dRel[i]].id)
+					    }
+					    
+					    if(i==dRel.length-1){
+					    	dRel = [];
+					    	for(var j=0;j<zRel.length;j++){
+					    		dRel.push(zRel[j]);
+					    	}
+					    	for(var j=0;j<qRel.length;j++){
+					    		dRel.push(qRel[j]);
+					    	}
+					    }
+					}
+					
+					for(i=0;i<len;i++){
+					    for(j=0;j<len-1-i;j++){
+					    	pre = data[dRel[j]].ms;
+					    	var next = data[dRel[j+1]].ms;
+					        if(next<pre){
+					            var temp=dRel[j];
+					            dRel[j]=dRel[j+1];
+					            dRel[j+1]=temp;
+					        }
+					    }
+					}
+					
+					//显示排序后的订单
+					for(var k=0;k<len;k++){
+						var str = data[dRel[k]].time;
+						var rStr = str.substring(5,str.length);
+						var ht = '<li>'+
+									'<div>'+
+										'<div class="top">'+
+											'<div class="time-only">'+
+												'<a>' + rStr + '</a>'+
+												'<a>送达时间</a>'+
+											'</div>'+
+										'</div>'+
+										'<div class="center">'+
+											'<a class="place">快递站点：站点A菜鸟驿站</a>'+
+											'<a class="place">上海华东大学北校区站点A菜鸟驿站</a>'+
+										'</div>'+
+										'<div class="bottom">'+
+											'<a class="send-place">送件地址：' + data[dRel[k]].place +'</a>'+
+											'<div>'+
+												'<div class="look-way">查看路线</div>'+
+											'</div>'+
+											'<div>'+
+												'<div>接单摆渡</div>'+
+											'</div>'+
+										'</div>'+
+									'</div>'+
+								'</li>';
+						uOrder.innerHTML = uOrder.innerHTML + ht;
+					}
+					
+					//查看路线点击事件
+					var ways = document.querySelectorAll('.look-way');
+					for (var h=0,len=ways.length;h<len;h++) {
+						ways[h].index = h;
+						ways[h].addEventListener('click',function(){
+							showOrder.classList.add('mui-hidden');
+							end = new BMap.Point(data[dRel[this.index]].lng,data[dRel[this.index]].lat);
+							showWay(start,end,thought);
+						})
+					}
+					
+					
+				}else{
+					uOrder.innerHTML = '<a>没有找到相应条件的结果！</a>';
+				}
+				
+//				for (var i=0;i<dRel.length;i++) {
+//					console.log(allOrder[dRel[i]].time);
+//				}
+				
+			}
+			
+			//计算距离
+			function Sort(pot,rel,data){
+				
+				document.querySelector('#cTime').classList.add('mui-hidden');
+				
+				rel = [];
+				uOrder.innerHTML = '';
+				var len=data.length;
+				
+			
+				//计算点到默认位置的距离储存
+				var pointA = pot;//
+				for (var i=0;i<len;i++) {
+					var pointB = new BMap.Point(data[i].lng,data[i].lat);
+					data[i].distance = parseInt(map.getDistance(pointA,pointB));
+				}
+				
+				//添加所有订单id到数组
+				for (var i=0;i<len;i++) {
+					rel.push(data[i].id)
+				}
+				
+				//距离冒泡排序
+				var pre = null;
+				for(i=0;i<len;i++){
+			        for(j=0;j<len-1-i;j++){
+			        	pre = data[rel[j]].distance;
+			        	var next = data[rel[j+1]].distance;
+			            if(next<pre){
+			                var temp=rel[j];
+			                rel[j]=rel[j+1];
+			                rel[j+1]=temp;
+			            }
+			        }
+			    }
+				  
+				
+				//显示排序后的订单
+				for(var k=0;k<len;k++){
+					var str = data[rel[k]].time;
+					var rStr = str.substring(5,str.length);
+					var ht = '<li>'+
+								'<div>'+
+									'<div class="top">'+
+										'<div class="distance">'+
+											'<a>' + data[rel[k]].distance + '米</a>'+
+											'<a>距离</a>'+
+										'</div>'+
+										'<div class="time">'+
+											'<a>' + rStr + '</a>'+
+											'<a>送达时间</a>'+
+										'</div>'+
+									'</div>'+
+									'<div class="center">'+
+										'<a class="place">快递站点：站点A菜鸟驿站</a>'+
+										'<a class="place">上海华东大学北校区站点A菜鸟驿站</a>'+
+									'</div>'+
+									'<div class="bottom">'+
+										'<a class="send-place">送件地址：' + data[rel[k]].place +'</a>'+
+										'<div>'+
+											'<div class="look-way">查看路线</div>'+
+										'</div>'+
+										'<div>'+
+											'<div>接单摆渡</div>'+
+										'</div>'+
+									'</div>'+
+								'</div>'+
+							'</li>';
+					uOrder.innerHTML = uOrder.innerHTML + ht;
+				}
+				
+				//查看路线点击事件
+				var ways = document.querySelectorAll('.look-way');
+				for (var h=0,len=ways.length;h<len;h++) {
+					ways[h].index = h;
+					ways[h].addEventListener('click',function(){
+						showOrder.classList.add('mui-hidden');
+						end = new BMap.Point(data[rel[this.index]].lng,data[rel[this.index]].lat);
+						showWay(start,end,thought);
+					})
+				}
+				
+			}
+			
+			//路线规划
+			function showWay(s,e,t){
+				map.clearOverlays();
+				
+				sBox.classList.add('mui-hidden');
+				backList.classList.remove('mui-hidden');
+				
+				var SwayPointIconHtml ='<div style="position: absolute; margin: 0px; padding: 0px; width: 24px; height: 30px; overflow: hidden;"><img src="images/startIcon.png" style="display: block; border:none;width:100%;height:100%; "></div>';
+				var EwayPointIconHtml ='<div style="position: absolute; margin: 0px; padding: 0px; width: 24px; height: 30px; overflow: hidden;"><img src="images/endIcon.png" style="display: block; border:none;width:100%;height:100%; "></div>'
+				var TwayPointIconHtml ='<div style="position: absolute; margin: 0px; padding: 0px; width: 24px; height: 30px; overflow: hidden;"><img src="images/thoughtIcon.png" style="display: block; border:none;width:100%;height:100%; "></div>';
+				
+				var driving = new BMap.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true},//policy: route,
+			            onPolylinesSet:function(routes) { 
+			            searchRoute = routes[0].getPolyline();//导航路线
+			            map.addOverlay(searchRoute); 
+			        }, 
+			        onMarkersSet:function(routes) {
+					    
+					    routes[0].marker.Ac.innerHTML = SwayPointIconHtml;
+					    
+					    for (var i=1;i<routes.length-1;i++) {
+				            routes[i].Pm.Ac.innerHTML=TwayPointIconHtml;
+					    }
+					   
+			           	routes[routes.length-1].marker.Ac.innerHTML = EwayPointIconHtml;
+			    	}	
+				});
+			    driving.search(s,e,{waypoints:thought});//
+				
+				start = nowP;
+				end = null;
+			}
+			
+			//返回订单列表
+			document.querySelector('.backList').addEventListener('tap',function(){
+				this.classList.add('mui-hidden');
+				sBox.classList.remove('mui-hidden');
+				showOrder.classList.remove('mui-hidden');
+				Default();map.clearOverlays();
+				setNP();
+				setKdMaker(data);
+			})
+			
+			//地图刷新按钮
+			var backPosiBtn = document.querySelector('#backPosi');
+			var deg = 0;
+			backPosiBtn.addEventListener('click', rotateS);
+			
+			function rotateS(){
+				//还原参数 
+				GtPosi = null;//用户选择的目的地
+				end = null;//终点
+				thought = [];//经过点
+				
+				//还原地图
+				map.setZoom(16);
+				map.clearOverlays();//清除marker
+				setNP(); //设置个人定位
+				setKdMaker(data);//创建站点marker
+				map.panTo(nowP);
+				backList.classList.add('mui-hidden');
+				sBox.classList.remove('mui-hidden');
+				document.querySelector('#suggestId').value ='';
+				document.querySelector('#suggestId2').value ='';
+				
+				//旋转动画
+				deg -= 1440;
+				backPosiBtn.style.transform = "rotate(" + deg + "deg)";
+				backPosiBtn.removeEventListener('click',rotateS);
+				setTimeout(function(){
+					backPosiBtn.addEventListener('click', rotateS)
+				},3000);
+			}
+			
+			
+			//初始化
+			function Default(){
+				var len = a.length;
+				document.querySelector('#suggestId').blur();
+				document.querySelector('#suggestId2').blur();
+				for (var i=0;i<len;i++) {
+					a[i].classList.remove('mui-active');
+				}
+				a[0].classList.add('mui-active');
+			}
+			
+			
+			//map触摸
+			map.addEventListener('touchstart',function(){
+				Default();
+			})
+			
+			mui.plusReady(function() {
+				
+				//获取地址
+				plus.geolocation.getCurrentPosition(translatePoint, function(e) {
+                    mui.toast("异常:" + e.message);
+                });
+				
+				var clientH = plus.display.resolutionHeight;
+				var navh = plus.navigator.getStatusbarHeight();
+				document.querySelector('#header').style.height = navh + 40 + 'px';
+				document.querySelector('#show-once').style.paddingTop = navh + 'px';
+				document.querySelector('#show-once').style.height = clientH + 'px';
+				document.querySelector('#container').style.height = clientH + 'px';
+				document.querySelector('#footer').style.top = clientH - 40 + 'px';
+				document.body.style.height = clientH + 'px';
+				
+				//预加载
+				preload();
+
+				//侧滑栏
+				_self = plus.webview.currentWebview();
+				var titleView = _self.getNavigationbar();
+
+				if(!titleView) {
+					titleView = plus.webview.getLaunchWebview().getNavigationbar();
+				}
+				
+				
+				//开启回弹
+				_self.setStyle({
+					bounce: "vertical",
+					bounceBackground:"#efeff4",
+					popGesture:'none'//首页有侧滑菜单，因此屏蔽首页的侧滑关闭功能
+				});
+
+				document.querySelector("#navBtn").addEventListener("click", function(e) {
+					var x = e.clientX;
+					if(x < 44) { //触发menu菜单
+						var _left = parseInt(_self.getStyle().left);
+						if(_left > 0) { //处于显示状态
+							closeMenu();
+						} else {
+							openMenu();
+						}
+					} else if(x > about_left) { //触发关于页面
+						
+					}
+				}, false);
+
+				//启用侧滑拖拽操作，延时的原因是menu页是延时创建的，所以这里需要相应延时
+				setTimeout(function() {
+					_self.drag({
+//						direction: "right",
+						moveMode: "followFinger"
+					}, {
+						view: menu,
+						moveMode: "follow"
+					}, function(e) {
+						//console.log(JSON.stringify(e));
+					});
+				}, 500);
+
+
+				// 原生图片预览仅新版本runtime支持，若引擎不支持，则隐藏；
+				if(!plus.nativeUI.previewImage) {
+					var previewImageNativeElem = document.getElementById('preview_image_native');
+					previewImageNativeElem.className = previewImageNativeElem.className.replace('mui-plus-visible', 'mui-hidden');
+				}
+				
+			});
+			
+			/**
+			 * 显示侧滑菜单
+			 */
+			function openMenu() {
+				plus.webview.startAnimation({
+						'view': _self,
+						'styles': {
+							'fromLeft': '0',
+							'toLeft': "80%"
+						},
+						'action': 'show'
+					}, {
+						'view': menu,
+						'styles': {
+							'fromLeft': "-80%",
+							'toLeft': '0'
+						},
+						'action': 'show'
+					},
+					function(e) {
+						//console.log(JSON.stringify(e));
+						if(e.id == menu.id) { //侧滑菜单打开
+						}
+					}.bind(this)
+				)
+			};
+			/**
+			 * 关闭菜单
+			 */
+			function closeMenu() {
+				plus.webview.startAnimation({
+						'view': _self,
+						'styles': {
+							'fromLeft': '80%',
+							'toLeft': "0"
+						},
+						'action': 'show'
+					}, {
+						'view': menu,
+						'styles': {
+							'fromLeft': "0",
+							'toLeft': '-80%'
+						},
+						'action': 'show'
+					},
+					function(e) {
+//						console.log(JSON.stringify(e));
+						if(e.id == _self.id) {}
+					}.bind(this)
+				)
+			};
+			window.addEventListener("menu:close", closeMenu);
+
+			var _toast = false;
+
+			mui.back = function() {
+				if(parseInt(_self.getStyle().left) > 0) {
+					closeMenu();
+					return;
+				}
+
+				if(!_toast || !_toast.isVisible()) {
+					_toast = mui.toast('再按一次返回键退出<br>', {//点此可&nbsp;<span style="border-bottom:1px solid #fff" onclick="openFeedback();">反馈意见</span>
+						duration: 'long',
+						type: 'div'
+					});
+				} else {
+					plus.runtime.quit();
+				}
+			}
+
+			//重写mui.menu方法，Android版本menu按键按下可自动打开、关闭侧滑菜单；
+			mui.menu = function() {
+				if(parseInt(_self.getStyle().left) > 0) {
+					closeMenu();
+				} else {
+					openMenu();
+				}
+			}
+
+			/**
+			 * 退出时提醒用户参加问题反馈
+			 */
+			function openFeedback() {
+				plus.nativeUI.showWaiting();
+				var _p = plus.os.name === 'Android' ? 'a' : plus.os.name === 'iOS' ? 'i' : '';
+				//TODO：这里使用的是FeedBack云地址，开发者也可以替换为本地页面地址
+				var url = 'http://stream.dcloud.net.cn/wap2app/feedback?p=' + _p;
+				url += "&plus_version=" + plus.runtime.innerVersion;
+				url += "&vendor=" + plus.device.vendor;
+				url += "&md=" + plus.device.model;
+				/*****开发者需修改的部分   开始*****/
+				url += "&app_name=HelloMUI&app_vendor=DCloud";
+				//如有本地关于页面，则填写关于页面的路径
+				//注意：需要_www/前缀
+				url += "&about=_www/examples/info.html";
+				/*****开发者需修改的部分   结束*****/
+
+				var feedbackWebview = plus.webview.create(url, "__W2A_FEEDBACK");
+				feedbackWebview.addEventListener('titleUpdate', function() {
+					plus.nativeUI.closeWaiting();
+					feedbackWebview.show('slide-in-right', 200);
+				});
+			}
+		</script>
+	</body>
+
+</html>

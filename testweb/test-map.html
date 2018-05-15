@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+html {
+height:100%;
+}
+body {
+height:100%;
+margin:0px;
+padding:0px;
+}
+#container {
+height:50%;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="http://api.map.baidu.com/api?v=1.4" type="text/javascript"></script>
+<script type="text/javascript" src="http://developer.baidu.com/map/jsdemo/demo/convertor.js"></script>
+<script>
+$(function () {
+navigator.geolocation.getCurrentPosition(translatePoint); //定位
+});
+function translatePoint(position) {
+var currentLat = position.coords.latitude;//经度
+var currentLon = position.coords.longitude;//纬度
+var gpsPoint = new BMap.Point(currentLon, currentLat);
+BMap.Convertor.translate(gpsPoint, 0, initMap); //转换坐标
+}
+function initMap(point) {
+//初始化地图
+map = new BMap.Map("container");//实例化容器
+map.addControl(new BMap.NavigationControl());//平移缩放控件
+map.addControl(new BMap.ScaleControl());//比例尺控件
+map.addControl(new BMap.OverviewMapControl());//缩略地图控件
+map.centerAndZoom(point, 15);//地图初始化，参数地图坐标和级别
+map.addOverlay(new BMap.Marker(point));//当前位置加标记
+var myZoomCtrl = new ZoomControl();
+map.addControl(myZoomCtrl);
+function ZoomControl() {
+this.defaultAnchor = BMAP_ANCHOR_TOP_LEFT; //调整控件的位置
+this.defaultOffset = new BMap.Size(10, 10);//通过像素调整位置
+}
+//自定义控件，点击两下实现放大
+ZoomControl.prototype = new BMap.Control();
+ZoomControl.prototype.initialize = function (map) {
+var div = document.createElement("div");
+div.appendChild(document.createTextNode("放大2级"));
+div.style.cursor = "pointer";
+div.style.border = "1px solid gray";
+div.style.backgroundColor = "white";
+div.onclick = function (e) {
+map.zoomTo(map.getZoom() + 2);
+}
+map.getContainer().appendChild(div);
+return div;
+}
+}
+</script>
+</head>
+<body>
+<div id="container"></div>
+</body>
+</html>

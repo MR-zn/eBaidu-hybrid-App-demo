@@ -1,0 +1,273 @@
+/*comment*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html,
+body {
+	background-color: #f4f3ef;
+}
+
+ul,
+li {
+	list-style: none;
+}
+
+header {
+	height: 34px;
+	background: #7ac256;
+	text-align: center;
+}
+
+header span {
+	font-family: "微软雅黑";
+	font-size: 17px;
+	color: #fff;
+	line-height: 34px;
+}
+
+a:hover {
+	color: none;
+}
+
+.icon-box {
+	position: absolute;
+	display: block;
+	padding: 6px 25px 4.7px 25px;
+}
+
+.icon-jiantou {
+	font-size: 22px;
+	font-weight: bold;
+	color: #fff;
+}
+
+.tab {
+	height: 35px;
+	background: #fff;
+	width: 100%;
+	display: flex;
+}
+
+.tab>li {
+	flex: 1;
+	text-align: center;
+}
+
+.tab>li a {
+	display: block;
+	color: #b6b9bf;
+}
+
+.tab>li span {
+	line-height: 35px;
+	box-sizing: border-box;
+	font-size: 15px;
+	height: 35px;
+	/*padding: 9px 0px;*/
+	display: inline-block;
+}
+
+.user-head {
+	padding-top: 15px;
+	text-align: center;
+}
+
+.user-head p {
+	text-indent: 0;
+	margin: 0;
+	text-align: center;
+}
+
+.finish_data {
+	color: #ff7f00;
+	line-height: 25px;
+}
+
+.form {
+	text-align: center;
+}
+
+.form li .nick_name,
+.el-collapse-item__header,
+.form li .authorize {
+	height: 50px;
+	width: 83.574879%;
+	margin: 10px auto 0 auto;
+	position: relative;
+}
+
+.form li .nick_name input,
+.form li .authorize input {
+	background: #c3c2bf;
+	color: #fff;
+	padding-left: 50px;
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: 24px 24px;
+	background-position: 12px 12px;
+	border-radius: 5px;
+	display: block;
+	box-sizing: border-box;
+	border: none;
+}
+
+.form li .nick_name input::-webkit-input-placeholder,
+.form li .authorize input::-webkit-input-placeholder {
+	color: #fff;
+}
+
+.mui-icon-contact {
+	position: absolute;
+	top: 12px;
+	left: 12px;
+}
+
+.mui-icon-contact:before {
+	font-size: 24px;
+	color: #fff;
+}
+
+.el-collapse-item__header {
+	background: #c3c2bf !important;
+	color: #fff;
+	box-sizing: border-box;
+	display: block;
+	border-radius: 5px;
+	color: #fff;
+	font-size: 17px;
+	text-align: left;
+	padding-left: 50px;
+}
+
+.el-collapse-item__wrap {
+	width: 83.574879%;
+	margin: auto;
+}
+
+.el-collapse-item__content {
+	padding: 0;
+}
+
+.mui-table-view-cell {
+	/*border-bottom: 1px solid #999999;*/
+	padding-right: 15px !important;
+	/*border-left: 1px solid #ff7f00;*/
+}
+
+.mui-table-view-radio .mui-table-view-cell>a:not(.mui-btn) {
+	margin: -15px;
+}
+
+.mui-table-view hr,
+.mui-input-group hr {
+	width: 93%;
+	margin: auto;
+}
+
+.mui-input-clear {
+	padding: 10px 30px !important;
+	height: 40px !important;
+}
+
+.mui-input-group .mui-input-row:after {
+	background: none;
+}
+
+.mui-icon-clear {
+	right: 20px !important;
+}
+
+.el-collapse-item:first-child .el-collapse-item__header {
+	background-image: url(../images/register/gender.png) !important;
+	background-repeat: no-repeat !important;
+	background-size: 24px 24px !important;
+	background-position: 12px 12px !important;
+}
+
+.el-collapse-item:nth-child(2) .el-collapse-item__header {
+	background-image: url(../images/register/write.png) !important;
+	background-repeat: no-repeat !important;
+	background-size: 24px 24px !important;
+	background-position: 12px 12px !important;
+}
+
+.form li .authorize input {
+	background-image: url(../images/register/authorize.png) !important;
+	background-repeat: no-repeat !important;
+	background-size: 24px 24px !important;
+	background-position: 12px 12px !important;
+}
+
+.mui-input-group,.mui-input-group:before,.mui-input-group:after {
+	background: none;
+}
+
+.el-collapse {
+	border: none;
+}
+
+.form li .authorize .mui-input-row,
+.form li .nick_name .mui-input-row {
+	height: 50px;
+}
+
+.form li .authorize .mui-input-row input,
+.form li .nick_name .mui-input-row input {
+	height: 100% !important;
+	padding-left: 50px !important;
+}
+
+.form li .authorize .mui-input-row .mui-icon-clear,
+.form li .nick_name .mui-input-row .mui-icon-clear {
+	top: 19px !important;
+	font-size: 17px;
+}
+
+/*-------------------------------------*/
+
+.login-box {
+	height: 40px;
+	width: 300px;
+	margin: 20px auto 0;
+	text-align: center;
+}
+
+#login {
+	width: 100%;
+	height: 100%;
+	border-radius: 20px;
+	color: #fff;
+	background: #76c056;
+}
+
+#login:active {
+	background: #477235;
+}
+
+/*.mui-table-view-radio .mui-table-view-cell.mui-selected .mui-navigate-right:after {
+	position: absolute;
+	left: 50%;
+}*/
+
+
+/*-------------------------------------*/
+
+footer {
+	width: 100%;
+	position: absolute;
+	top: 648.1818px;
+	text-align: center;
+}
+
+footer span {
+	color: #999999;
+	font-size: 13.5px;
+}
+
+footer span a {
+	color: #5bb630;
+}

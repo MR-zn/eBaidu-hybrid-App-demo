@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/sidemenu-sideweb.css"/>
+	</head>
+
+	<body id="custom-service">
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"><span>返回</span></a>
+			<h1 class="mui-title">我的客服</h1>
+		</header>
+		<section id="container">
+			<div class="card">
+				<div><img src="../images/sidemenu/rb.png"/></div>
+				<div>欢迎小可爱们，在使用过程中遇到任何问题都可以联系小兔几哦，我会认真帮您解决哒~</div>
+			</div>
+		</section>
+		<footer class="mui-bar mui-bar-footer">
+			<ul>
+				<!--<img src="../images/sidemenu/write.png"/>-->
+				<li><a></a></span></li>
+				<li><textarea></textarea></li>
+				<li><a>发送</a></li>
+			</ul>
+		</footer>
+	</body>
+	<script src="../js/mui.min.js"></script>
+	<script>
+		mui.init();
+		
+		mui.plusReady(function(){
+			plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
+		})
+	</script>
+</html>
