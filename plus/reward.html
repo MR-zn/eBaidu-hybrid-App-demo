@@ -33,7 +33,7 @@
 				<ul>
 					<li><a><img src="../images/sidemenu/reward.png"/></a></li>
 					<li><a>可用积分</a></li>
-					<li><a>25</a></li>
+					<li><a class="integral">25</a></li>
 				</ul>
 			</header>
 			
@@ -41,7 +41,7 @@
 				<ul class="spnum">
 					<li><a>专属邀请码</a></li>
 					<li id="spnum"><a>KG8HP2</a></li>
-					<li class="share"><a href="">>>分享邀请好友得免单</a></li>
+					<li class="share"><a>>>分享邀请好友得免单</a></li>
 				</ul>
 			</div>
 			<div class="card">
@@ -49,7 +49,7 @@
 					<li><a>兑换礼品</a></li>
 					<li><a><img src="../images/sidemenu/free.png"/></a></li>
 					<li><a>100积分/单</a></li>
-					<li><a href="">立即兑换</a></li>
+					<li><a id="exchange">立即兑换</a></li>
 				</ul>
 			</div>
 			<div class="card">
@@ -68,6 +68,44 @@
 		
 		mui.plusReady(function(){
 			plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
+		})
+		
+		var integral = parseInt(document.querySelector('.integral').innerHTML);
+		
+		mui.ajax('',{
+			data: {
+				integral: integral
+			},
+			dataType:'json',//服务器返回json格式数据
+			type:'post',//HTTP请求类型
+			timeout:10000,//超时时间设置为10秒；
+			success:function(data){
+				mui.toast('请求成功！',{ duration:1500, type:'div' })
+				document.querySelector('.integral').innerHTML = data;
+			},
+			error:function(xhr,type,errorThrown){
+//				mui.toast('请求失败！',{ duration:1500, type:'div' })
+			}
+		})
+		
+		
+		document.querySelector('#exchange').addEventListener('tap',function(){
+			mui.ajax('',{
+				data: {
+					integral: integral
+				},
+				dataType:'json',//服务器返回json格式数据
+				type:'post',//HTTP请求类型
+				timeout:10000,//超时时间设置为10秒；
+				success:function(data){
+					mui.toast('兑换成功！',{ duration:1500, type:'div' })
+					
+				},
+				error:function(xhr,type,errorThrown){
+					mui.toast('兑换失败！',{ duration:1500, type:'div' })
+					console.log(integral)
+				}
+			})
 		})
 	</script>
 

@@ -281,7 +281,8 @@
 					"examples/guide.html",
 					"plus/user-msg.html",
 					"plus/order.html",
-					"plus/change-uPlace.html"
+					"plus/change-uPlace.html",
+					"plus/add-newPlace.html"
 				],
 				"priority": 0
 			},
@@ -391,7 +392,8 @@
 					"plus/feedback.html",
 					"plus/user-msg.html",
 					"plus/custom-service.html",
-					"plus/order.html"
+					"plus/order.html",
+					"plus/order-details.html"
 				],
 				"priority": 0
 			},
@@ -464,6 +466,13 @@
 				"resources": [],
 				"refer": [
 					"plus/user-msg-more.html"
+				],
+				"priority": 0
+			},
+			"plus/reward.html": {
+				"resources": [],
+				"refer": [
+					"plus/reward-more.html"
 				],
 				"priority": 0
 			}

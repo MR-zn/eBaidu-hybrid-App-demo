@@ -9,6 +9,11 @@
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
 		<link rel="stylesheet" href="../css/mui.min.css" />
 		<link rel="stylesheet" type="text/css" href="../css/sidemenu-sideweb.css"/>
+		<style>
+			.mui-checkbox input[type=checkbox]:checked:before, .mui-radio input[type=radio]:checked:before {
+				color: #ff7f00;
+			}
+		</style>
 	</head>
 
 	<body id="change-uPlace">
@@ -58,6 +63,23 @@
 	<script src="../js/sidemenu.js"></script>
 	<script>
 		mui.init();
+		
+		mui.ajax('',{
+			data: {
+				
+			},
+			dataType:'json',//服务器返回json格式数据
+			type:'post',//HTTP请求类型
+			timeout:10000,//超时时间设置为10秒；
+			success:function(data){
+				mui.toast('请求成功！',{ duration:1500, type:'div' })
+				document.querySelector('.integral').innerHTML = data;
+			},
+			error:function(xhr,type,errorThrown){
+//				mui.toast('请求失败！',{ duration:1500, type:'div' })
+			}
+		})
+		
 		mui.plusReady(function(){
 			plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
 		})

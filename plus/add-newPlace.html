@@ -11,8 +11,8 @@
 		<link rel="stylesheet" type="text/css" href="../css/sidemenu-sideweb.css"/>
 		<style type="text/css">
 			.tangram-suggestion-main {
-				left: 28px!important;
-				width: 345px!important;
+				left: 29px!important;
+				width: 365px!important;
 			}
 			.tangram-suggestion .route-icon {
 				background: none!important;
@@ -42,6 +42,7 @@
 				<div class="add-newplace mui-input-row">
 					收件地址：<input id="suggestId" class="write mui-input-clear" type="text" placeholder="输入地址" value="" />
 					<!--<div class="write" contenteditable="true">输入地址</div>-->
+					<!--<input class="num" type="text" name="num" id="" value="" placeholder='寝室号(选填)' />-->	
 				</div>
 			</form>
 			<div id="" class="add">保存新地址</div>
@@ -57,36 +58,45 @@
 		newPlaces = document.querySelectorAll('.add-newplace');
 		var len=newPlaces.length;
 		var writes = document.querySelectorAll('.write');
-		var data=['收件人姓名','电话号码','输入地址'];
-		for (var j=0;j<len;j++) {
-			if(writes[j].value==''){
-				writes[j].style.textAlign = 'right';
-			}else{
-				writes[j].style.textAlign = 'left';
-			}
-		}
+//		var num = document.querySelector('.num');
+		var posi = null;
+//		for (var j=0;j<len;j++) {
+//			if(writes[j].value==''){
+//				writes[j].style.textAlign = 'right';
+//			}else{
+//				writes[j].style.textAlign = 'left';
+//			}
+//		}
 		for (var i=0;i<len;i++) {
 			writes[i].index = i;
 			writes[i].data = writes[i].placeholder;
-			writes[i].addEventListener('tap',function(){
-				for (var j=0;j<len;j++) {
-					writes[j].placeholder = writes[j].data;
-					if(writes[j].value==''){
-						writes[j].style.textAlign = 'right';
-					}else{
-						writes[j].style.textAlign = 'left';
-					}
-				}
-				this.placeholder = '';
-				this.style.textAlign = 'left';
-				if(this.innerHTML==data[this.index]){
-					this.innerHTML='';
-				}
-				
-			})
+//			writes[i].addEventListener('tap',function(){
+//				for (var j=0;j<len;j++) {
+//					writes[j].placeholder = writes[j].data;
+//					if(writes[j].value==''){
+//						writes[j].style.textAlign = 'right';
+//					}else{
+//						writes[j].style.textAlign = 'left';
+//					}
+//				}
+//				this.placeholder = '';
+//				this.style.textAlign = 'left';
+//				if(this.innerHTML==data[this.index]){
+//					this.innerHTML='';
+//				}
+//				event.stopPropagation();
+//			})
 		}
 		
-//		document.body.addEventListener('tap',function(){
+		document.onkeydown = function () {
+	        if (window.event && window.event.keyCode == 13) {
+	            window.event.returnValue = false;
+	        }
+	    }
+		
+		
+		
+//		document.querySelector('body').addEventListener('tap',function(){
 //			for (var j=0;j<len;j++) {
 //				writes[j].placeholder = writes[j].data;
 //				if(writes[j].value==''){
@@ -96,15 +106,6 @@
 //				}
 //			}
 //		})
-		document.onkeydown = function () {
-	        if (window.event && window.event.keyCode == 13) {
-	            window.event.returnValue = false;
-	        }
-	    }
-		
-		document.querySelector('.add').addEventListener('tap',function(){
-			console.log(1)
-		})
 		
 		mui.plusReady(function(){
 		    var self = plus.webview.currentWebview();
@@ -114,9 +115,12 @@
 		   
 		    
 		    if(name||phone||place){
-		    	 writes[0].value = name;
+		    	writes[0].value = name;
 			    writes[1].value = phone;
 			    writes[2].value = place;
+			    writes[0].style.textAlign = 'left';
+			    writes[1].style.textAlign = 'left';
+			    writes[2].style.textAlign = 'left';
 		    }
 		});
 		
@@ -133,16 +137,65 @@
 			
 			setPlace();
 		});
+
+
+		var name = writes[0].value;
+		var phone = writes[1].value;
+		var place = writes[2].value;
+		var lng=null,lat=null;
 		function setPlace(){
 			function myFun(){
-				var pp = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
-				console.log(pp)
+//				posi = local.getResults().getPoi(0).point;    //获取第一个智能搜索的结果
+				if(writes[2].value==null){
+					mui.toast('地址不能为空！',{ duration:1500, type:'div' })
+				}else if(local.getResults()){
+					posi = local.getResults().getPoi(0).point;
+					
+					lng = posi.lng; 
+					lat = posi.lat;
+				}else {
+					mui.toast('地址输入有误！',{ duration:1500, type:'div' })
+				}
+				
+				mui.ajax('',{
+					data:{
+						name: name,
+						phone: phone,
+						place: place,
+						lng: lng,
+						lat: lat
+					},
+					dataType: 'json',
+					type: 'post',
+					success:function(data){
+						mui.toast('修改成功！',{ duration:1500, type:'div' })
+					},
+					error:function(xhr,type,errorThrown){
+						mui.toast('修改失败！',{ duration:1500, type:'div' })
+//						console.log(name);
+//						console.log(phone);
+//						console.log(place);
+						console.log(lng);
+						console.log(lat);
+						console.log(myValue)
+					}
+				})
 			}
 			var local = new BMap.LocalSearch(map, { //智能搜索
 			  onSearchComplete: myFun
 			});
 			local.search(myValue);
 		}
+		
+		var v = '温州职业技术学院茶山校区';//120.708909  27.930073
+		
+		
+		document.querySelector('.add').addEventListener('tap',function(){
+			
+			myValue = writes[2].value;
+			setPlace();
+			
+		})
 	</script>
 
 </html>

@@ -19,7 +19,8 @@
 			"plus/setting.html",
 			"plus/user-msg.html",
 			"plus/myBalance.html",
-			"plus/order.html"
+			"plus/order.html",
+			"plus/order-details.html"
 		],
 		"resources": []
 	},

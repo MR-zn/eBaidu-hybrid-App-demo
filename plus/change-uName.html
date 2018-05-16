@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Hello MUI</title>
+		<title>修改姓名</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -26,19 +26,54 @@
 					<!--<a class="del"><img src="../images/sidemenu/del.png"/></a>-->
 				</div>
 			</form>
-			<div class="change">保存</div>
+			<div id="save" class="save">保存</div>
 		</section>
 
 	</body>
 	<script src="../js/mui.min.js"></script>
 	<script>
 		mui.init();
+		
+		mui.ajax('',{
+			data: {
+				
+			},
+			dataType:'json',//服务器返回json格式数据
+			type:'post',//HTTP请求类型
+			timeout:10000,//超时时间设置为10秒；
+			success:function(data){
+				mui.toast('请求成功！',{ duration:1500, type:'div' })
+				document.querySelector('.integral').innerHTML = data;
+			},
+			error:function(xhr,type,errorThrown){
+//				mui.toast('请求失败！',{ duration:1500, type:'div' })
+			}
+		})
+		
+		
 		document.onkeydown = function () {
 	        if (window.event && window.event.keyCode == 13) {
 	            window.event.returnValue = false;
 	        }
 	    }
 		
+		var name = document.querySelector('.write').value;
+		document.querySelector('#save').addEventListener('tap',function(){
+			mui.ajax('',{
+				data: {
+					name: name
+				},
+				dataType:'json',//服务器返回json格式数据
+				type:'post',//HTTP请求类型
+				timeout:10000,//超时时间设置为10秒；
+				success:function(data){
+					
+				},
+				error:function(xhr,type,errorThrown){
+					console.log(name)
+				}
+			})
+		})
 //		var con = document.querySelector('#container');
 //		var write = con.querySelector('.write');
 //		var del = con.querySelector('.del');

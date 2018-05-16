@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Hello MUI</title>
+		<title>app首页</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -11,6 +11,16 @@
 		<link rel="stylesheet" type="text/css" href="css/comment.css"/>
 		<link rel="stylesheet" type="text/css" href="css/reset.css">
 		<link rel="stylesheet" type="text/css" href="index.css"/>
+		<link rel="stylesheet" type="text/css" href="css/feedback.css"/>
+		<style>
+			.image-list {
+				width: 100%;
+			    height: 85px;
+			    background-size: cover;
+			    padding: 10px 10px;
+			    overflow: hidden;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -66,8 +76,9 @@
 					</div>
 				</footer>					
 		    	<div id="container">
-			    	<div id="page_fir" class="index-page">
+			    	<div id="page_fir" class="index-page feedback">
 			    		<!--发单页-->
+			    		
 			    		<ul class="putlist-info">
 			    			<li class="add-place"><a href="plus/add-newPlace.html">添加收件地址</a></li>
 			    			<li class="info-fir">
@@ -91,11 +102,14 @@
 			    					<li id="choose-place" class="mui-table-view-cell">
 			    						<a class="mui-navigate-right">选择代拿地点<span class="info-right info-right-sec value">地点11A</span></a>
 			    					</li>
-			    					<li class="mui-table-view-cell">
-			    						<a class="mui-navigate-right">物件信息 <span>(输入验证短信及上传个人实名认证截图)</span></a>
+			    					<li id="Image" class="">
+			    						<a>物件信息 <span>(上传验证短信及个人实名认证截图)</span></a>
+			    						
+	    								<div id='image-list' class="row image-list"></div>
 			    					</li>
 			    					<li class="mui-table-view-cell">
-			    						<a class="mui-navigate-right">留言 <span>(选填，输入您想说的)</span></a>
+			    						<a class="mui-navigate-right">留言</a>
+			    						<input class="msg" type="text" placeholder="(选填，输入您想说的)" name="" id="" value="" /> 
 			    					</li>
 			    				</ul>
 			    			</li>
@@ -805,7 +819,7 @@
 					    routes[0].marker.Ac.innerHTML = SwayPointIconHtml;
 					    
 					    for (var i=1;i<routes.length-1;i++) {
-				            routes[i].Pm.Ac.innerHTML=TwayPointIconHtml;
+				            routes[i].Om.Ac.innerHTML=TwayPointIconHtml;
 					    }
 					   
 			           	routes[routes.length-1].marker.Ac.innerHTML = EwayPointIconHtml;
@@ -876,7 +890,35 @@
 				Default();
 			})
 			
+			
+			var index = 1;
+			var size = null;
+			var imageIndexIdNum = 0;
+			var starIndex = 0;
+			var feedback = {
+//				question: document.getElementById('question'), 
+//				contact: document.getElementById('contact'), 
+				imageList: document.getElementById('image-list')
+//				submitBtn: document.getElementById('submit')
+			};
+			var url = 'https://service.dcloud.net.cn/feedback';
+			feedback.files = [];
+			feedback.uploader = null;  
+			feedback.deviceInfo = null; 
+			
 			mui.plusReady(function() {
+				
+				feedback.deviceInfo = {
+					appid: plus.runtime.appid, 
+					imei: plus.device.imei, //设备标识
+					images: feedback.files, //图片文件
+					p: mui.os.android ? 'a' : 'i', //平台类型，i表示iOS平台，a表示Android平台。
+					md: plus.device.model, //设备型号
+					app_version: plus.runtime.version,
+					plus_version: plus.runtime.innerVersion, //基座版本号
+					os:  mui.os.version,
+					net: ''+plus.networkinfo.getCurrentType()
+				}
 				
 				//获取地址
 				plus.geolocation.getCurrentPosition(translatePoint, function(e) {
@@ -947,6 +989,166 @@
 				
 			});
 			
+			
+			/**
+			 *提交成功之后，恢复表单项 
+			 */
+			feedback.clearForm = function() {
+				feedback.question.value = '';
+				feedback.contact.value = '';
+				feedback.imageList.innerHTML = '';
+				feedback.newPlaceholder();
+				feedback.files = [];
+				index = 0;
+				size = 0;
+				imageIndexIdNum = 0;
+				
+			};
+			feedback.getFileInputArray = function() {
+				return [].slice.call(feedback.imageList.querySelectorAll('.file'));
+			};
+			feedback.addFile = function(path) {
+				feedback.files.push({name:"images"+index,path:path,id:"img-"+index});
+				index++;
+			};
+			/**
+			 * 初始化图片域占位
+			 */
+			feedback.newPlaceholder = function() {
+				var fileInputArray = feedback.getFileInputArray();
+				if (fileInputArray &&
+					fileInputArray.length > 0 &&
+					fileInputArray[fileInputArray.length - 1].parentNode.classList.contains('space')) {
+				return;
+			};
+			imageIndexIdNum++;
+//			if(imageIndexIdNum>2)
+//				console.log(1)
+			var placeholder = document.createElement('div');
+			placeholder.setAttribute('class', 'image-item space');
+			var up = document.createElement("div");
+			up.setAttribute('class','image-up')
+			//删除图片
+			var closeButton = document.createElement('div');
+			closeButton.setAttribute('class', 'image-close');
+			closeButton.innerHTML = 'X';
+			closeButton.id = "img-"+index;
+			//小X的点击事件
+			closeButton.addEventListener('tap', function(event) {
+				setTimeout(function() {
+					for(var temp=0;temp<feedback.files.length;temp++){
+						if(feedback.files[temp].id==closeButton.id){
+							feedback.files.splice(temp,1);
+						}
+					}
+					feedback.imageList.removeChild(placeholder);
+				}, 0);
+				return false;
+			}, false);
+			
+			//
+			var fileInput = document.createElement('div');
+			fileInput.setAttribute('class', 'file');
+			fileInput.setAttribute('id', 'image-' + imageIndexIdNum);
+			fileInput.addEventListener('tap', function(event) {
+				var self = this;
+				var index = (this.id).substr(-1);
+				
+				plus.gallery.pick(function(e) {
+			//				console.log("event:"+e);
+					var name = e.substr(e.lastIndexOf('/') + 1);
+			//				console.log("name:"+name);
+						
+					plus.zip.compressImage({
+						src: e,
+						dst: '_doc/' + name,
+						overwrite: true,
+						quality: 50
+					}, function(zip) {
+						size += zip.size  
+			//					console.log("filesize:"+zip.size+",totalsize:"+size);
+						if (size > (10*1024*1024)) {
+							return mui.toast('文件超大,请重新选择~');
+						}
+						if (!self.parentNode.classList.contains('space')) { //已有图片
+							feedback.files.splice(index-1,1,{name:"images"+index,path:e});
+						} else { //加号
+							placeholder.classList.remove('space');
+							feedback.addFile(zip.target);
+							feedback.newPlaceholder();
+						}
+						up.classList.remove('image-up');
+						placeholder.style.backgroundImage = 'url(' + zip.target + ')';
+					}, function(zipe) {
+						mui.toast('压缩失败！')
+						});
+						
+			
+						
+					}, function(e) {
+//						mui.toast(e.message);
+					},{});
+				}, false);
+				placeholder.appendChild(closeButton);
+				placeholder.appendChild(up);
+				placeholder.appendChild(fileInput);
+				feedback.imageList.appendChild(placeholder);
+			};
+			feedback.newPlaceholder();
+			feedback.send = function(content) {
+				feedback.uploader = plus.uploader.createUpload(url, {
+					method: 'POST'
+			}, function(upload, status) {
+			//			plus.nativeUI.closeWaiting()
+				console.log("upload cb:"+upload.responseText);
+				if(status==200){
+					var data = JSON.parse(upload.responseText);
+					//上传成功，重置表单
+					if (data.ret === 0 && data.desc === 'Success') {
+			//					mui.toast('反馈成功~')
+						console.log("upload success");
+			//					feedback.clearForm();
+					}
+				}else{
+					console.log("upload fail");
+				}
+				
+			});
+			//添加上传数据
+			mui.each(content, function(index, element) {
+				if (index !== 'images') {
+					console.log("addData:"+index+","+element);
+			//				console.log(index);
+					feedback.uploader.addData(index, element)
+				} 
+			});
+			//添加上传文件
+			mui.each(feedback.files, function(index, element) {
+				var f = feedback.files[index];
+				console.log("addFile:"+JSON.stringify(f));
+				feedback.uploader.addFile(f.path, {
+					key: f.name
+				});
+			});
+			//开始上传任务
+			feedback.uploader.start();
+			mui.alert("感谢反馈，点击确定关闭","问题反馈","确定",function () {
+				feedback.clearForm();
+				mui.back();
+			});
+			//		plus.nativeUI.showWaiting();
+			};
+			
+			
+			
+			var mask = mui.createMask(callback);//callback为用户点击蒙版时自动执行的回调；
+			var maskSw = true;
+			function callback(){
+				if(maskSw){
+					closeMenu();
+				}
+				maskSw = true; 
+			}
 			/**
 			 * 显示侧滑菜单
 			 */
@@ -969,10 +1171,13 @@
 					function(e) {
 						//console.log(JSON.stringify(e));
 						if(e.id == menu.id) { //侧滑菜单打开
+//							console.log(e.id)
+							mask.show();
 						}
 					}.bind(this)
 				)
 			};
+			
 			/**
 			 * 关闭菜单
 			 */
@@ -999,18 +1204,25 @@
 				)
 			};
 			window.addEventListener("menu:close", closeMenu);
+			
+			window.addEventListener('maskhide',function(e){
+//				console.log('maskhide');
+				maskSw = false;
+				mask.close();
+			})
 
 			var _toast = false;
 
 			mui.back = function() {
 				if(parseInt(_self.getStyle().left) > 0) {
 					closeMenu();
+					mask.close();
 					return;
 				}
 
 				if(!_toast || !_toast.isVisible()) {
 					_toast = mui.toast('再按一次返回键退出<br>', {//点此可&nbsp;<span style="border-bottom:1px solid #fff" onclick="openFeedback();">反馈意见</span>
-						duration: 'long',
+						duration: '1000',
 						type: 'div'
 					});
 				} else {

@@ -26,11 +26,15 @@ a,.mui-title {
 	padding: 0;
 }
 html,body,
-#order #container {
+#order #container,
+#derails #container {
 	height: 100%;
 }
 #order #container {
 	padding-top: 90px;
+}
+#derails #container {
+	padding-top: 40px;
 }
 ul,li {
 	list-style: none;
@@ -160,3 +164,60 @@ ul.card li:last-child a.confirm {
 	border: 1px solid #ff7f00;
 }
 
+
+/*订单详情*/
+#derails header {
+	background-color: white;
+}
+#derails header a,
+#derails header h1 {
+	color: #7ac256;
+}
+
+#derails #container {
+	background-color: #f4f3ef;
+}
+#derails #container ul {
+	border-top: 1px solid #e8e8e8;
+	border-bottom: 1px solid #e8e8e8;
+}
+#derails #container ul.first-ul li:first-child {
+	padding-top: 18px;
+}
+#derails #container ul.second-ul {
+	border-top: none;
+	margin-bottom: 20px;
+}
+#derails #container ul.third-ul li:first-child {
+	padding-top: 20px;
+}
+#derails #container ul.third-ul li:last-child {
+	padding-bottom: 20px;
+}
+#derails #container ul.third-ul,
+#derails #container ul.third-ul a {
+	color: #ff7f00;
+}
+#derails #container li {
+	padding: 8px 20px;
+	background-color: #FFFFFF;
+	overflow: hidden;
+}
+#derails #container li a {
+	color: #000000;	
+}
+#derails #container ul.first-ul li:nth-child(2) div,
+#derails #container ul.first-ul li:last-child div {
+	float: left;
+	height: 100%;
+}
+#derails #container ul.first-ul li:last-child div.msg {
+	max-width: 85%;
+	min-height: 40px;
+	word-break: break-all; 
+	word-wrap:break-word;
+}
+#derails #container ul.second-ul li:nth-child(3) div {
+	max-width: 77%;
+	float: left;
+}

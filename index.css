@@ -382,11 +382,11 @@ a {
 	font-size: 14px;
 	color: #C0C0C0;
 }
-#page_fir ul.place-info li:nth-child(2) a:after {
+/*#page_fir ul.place-info li:nth-child(2) a:after {
 	content: '+';
 	right: 18px;
 	font-size: 20px;
-}
+}*/
 #page_fir ul.place-info li:last-child a:after {
 	content: '';
 }
@@ -416,6 +416,17 @@ a {
 	color: orange;
 }
 
+
+#page_fir ul.putlist-info input.msg {
+	position: absolute;
+	margin: 0;
+	width: 88%;
+	height: 100%;
+	top: 0;
+	right: 0;
+	padding-left: 0;
+	padding-top: 6px;
+}
 
 /*接单页面*/
 #page_sec {
@@ -956,3 +967,18 @@ a {
 	color: #ff7f00;
 	background-color: #5bb630;
 }*/
+.feedback .row {
+	background-color: #fdfdfc!important;
+}
+.feedback .image-list {
+	height: 75px!important;
+}
+.feedback .image-list {
+	padding-bottom: 0!important;
+}
+.feedback .image-item {
+	margin-bottom: 0!important;
+}
+#Image a {
+	color: #000000;
+}

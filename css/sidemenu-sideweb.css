@@ -198,8 +198,8 @@ form {
 	width: 100%;
 	height: 100%;
 }
-#change-uName .change,
-#change-uPhone .change,
+#change-uName .save,
+#change-uPhone .save,
 #change-uPlace .add-place,
 #add-newplace .add {
 	width: 80%;
@@ -326,14 +326,30 @@ form {
 }
 #add-newplace .add-newplace .write {
 	position: absolute;
-	width: 79%;
+	width: 84%;
 	height: 100%;
 	font-size: 15px;
-	text-align: right;
+	text-align: left;
 	right: 0;
-	
+	padding-top: 8px!important;
 	z-index: 0;
 	border: none;
+	padding-right: 33px;
+}
+/*#add-newplace .add-newplace .write#suggestId {
+	width: 50%;
+	right: 30%;
+	padding-left: 0;
+	padding-right: 0;
+}*/
+#add-newplace .add-newplace .num {
+	right: 0;
+	position: absolute;
+	width: 30%;
+	border-left: 1px solid #CCCCCC;
+	padding-left: 5px;
+	height: 100%;
+	font-size: 15px;
 }
 
 /*实名认证*/

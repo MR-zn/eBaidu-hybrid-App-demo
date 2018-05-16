@@ -128,7 +128,7 @@
 
 				
 			}, function(e) {
-				mui.toast(e.message);
+//				mui.toast(e.message);
 			},{});
 		}, false);
 		placeholder.appendChild(closeButton);
