@@ -8,7 +8,7 @@
 
 ---
 
-<img src="./images/screenshot/31.png" width="50%" height="50%" />
+<img src="./images/screenshot/3.png" width="50%" height="50%" />
 
 ---
 
